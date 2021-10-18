@@ -265,7 +265,7 @@ const Home = () => {
 
         <Footer />
 
-        <div>
+        <div className="hidden">
           {wallet.connected &&
             <p className="text-gray-800 font-bold text-lg cursor-default">Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
           }
