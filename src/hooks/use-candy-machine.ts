@@ -81,10 +81,6 @@ export default function useCandyMachine() {
           account: PRESALE_CONTRACT_ACCOUNT,
           program
         });
-
-        const data: any = await presaleContract?.program.account.data.fetch(presaleContract.account);
-        const checkStatus = data.whitelistIndex;
-        toast.error(`${checkStatus}`);
       }
 
       setIsSoldOut(itemsRemaining === 0);
@@ -140,8 +136,10 @@ export default function useCandyMachine() {
 
   const checkMintPossible = async () => {
     if (wallet.connected && wallet.publicKey) {
+      let currentMilis: number = Date.now();
       await presaleContract?.program.rpc.checkMintPossible(
         wallet.publicKey?.toBase58(),
+        new BN(currentMilis),
         {
           accounts: {
             data: presaleContract.account,
