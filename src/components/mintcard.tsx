@@ -5,6 +5,7 @@ export const MintCard = ({
   gifImage,
   price,
   onClick,
+  disabled,
 }: any) => {
 
   return <div className="m-2 col-span-2 p-5 flex flex-col justify-center items-center flex-1 space-y-3 bg-white rounded-lg mint-card">
@@ -31,7 +32,9 @@ export const MintCard = ({
       </div>
       <button
         className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-6/12"
-        onClick={onClick}>
+        onClick={onClick}
+        disabled={disabled}
+      >
         MINT
       </button>
     </div>;

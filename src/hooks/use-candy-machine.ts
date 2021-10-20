@@ -191,12 +191,15 @@ export default function useCandyMachine() {
   };
 
   const onMint = async () => {
-    // Check current wallet can mint
-    let mintPossible = await checkMintPossible();
-    if (!mintPossible) return;
-
     try {
       setIsMinting(true);
+
+      // Check current wallet can mint
+      if (!checkMintPossible()) {
+        setIsMinting(false);
+        return;
+      }
+
       const anchorWallet = {
         publicKey: wallet.publicKey,
         signAllTransactions: wallet.signAllTransactions,
@@ -290,7 +293,6 @@ export default function useCandyMachine() {
 
         const promiseArray = []
         
-
         for (let index = 0; index < signedTransactions.length; index++) {
           const tx = signedTransactions[index];
           promiseArray.push(awaitTransactionSignatureConfirmation(
