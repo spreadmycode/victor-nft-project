@@ -19,7 +19,6 @@ const Home = () => {
   const [isActive, setIsActive] = useState(false);
   const [packCount, setPackCount] = useState<number>(2);
   const wallet = useWallet();
-
   const { isSoldOut, mintStartDate, isMinting, onMint, onMintMultiple, nftsData } = useCandyMachine()
 
   return (
