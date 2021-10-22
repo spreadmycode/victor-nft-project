@@ -126,7 +126,7 @@ body,
 }
 
 .top-z-index {
-  z-index: 9999999;
+  z-index: 1000;
 }
 
 @font-face {

@@ -1,8 +1,12 @@
-import { WalletDisconnectButton, WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import { useWallet } from "@solana/wallet-adapter-react";
 import React from 'react';
 import Link from 'next/link'
 
 const Header: React.FC = () => {
+
+  const wallet = useWallet();
+
   return <div className="flex flex-col xl:flex-row justify-between space-x-0 xl:space-x-5 space-y-5 p-5">
     <div className="sm:mx-auto xl:ml-40">
       <img
@@ -27,8 +31,7 @@ const Header: React.FC = () => {
       </Link>
     </div>
     <div className="flex items-center justify-center float-right">
-      <WalletMultiButton />
-      {/* <WalletDisconnectButton /> */}
+      <WalletMultiButton>{wallet.connected ? "Connected" : "Connect"}</WalletMultiButton>
     </div>
   </div>;
 }
