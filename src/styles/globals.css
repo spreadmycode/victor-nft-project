@@ -28,6 +28,8 @@ body,
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  width: 100%;
+  height: auto;
 }
 
 .advertise {

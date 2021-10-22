@@ -3,13 +3,13 @@ import React from 'react';
 import Link from 'next/link'
 
 const Header: React.FC = () => {
-  return <div className="flex flex-col md:flex-row justify-between space-x-0 md:space-x-5 space-y-5 md:space-x-0 p-5">
-    <div className="md:ml-40">
+  return <div className="flex flex-col xl:flex-row justify-between space-x-0 xl:space-x-5 space-y-5 p-5">
+    <div className="sm:mx-auto xl:ml-40">
       <img
-          src={`/images/tamdodgy logo.webp`}
-          alt="Logo" />
+        src={`/images/tamdodgy logo.webp`}
+        alt="Logo" />
     </div>
-    <div className="text-black space-x-6 text-2xl	font-bold flex items-center">
+    <div className="text-black justify-center space-x-6 text-1xl md:text-2xl lg:pr-10 font-bold flex items-center">
       <Link href="/">
         <a>Home</a>
       </Link>
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
         <a>FAQ</a>
       </Link>
     </div>
-    <div className="flex space-x-5 items-center">
+    <div className="flex items-center justify-center float-right">
       <WalletMultiButton />
       {/* <WalletDisconnectButton /> */}
     </div>

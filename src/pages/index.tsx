@@ -38,13 +38,13 @@ const Home = () => {
       <div className="flex flex-col justify-center items-center flex-1 mt-20">
 
         <div className="flex flex-col justify-center items-center flex-1 space-y-3 advertise">
-          <div className="flex flex-col md:flex-row space-y-2 md:w-8/12">
+          <div className="flex flex-col lg:flex-row space-y-2 lg:w-8/12">
             <img
               className="object-none object-left-bottom top-z-index"
               src={`/images/mmtchi.webp`}
               alt="MMTCHI" />
 
-            <div className="bg-blue-900 rounded-lg border-white border-8 space-y-3 p-10 md:-ml-12">
+            <div className="bg-blue-900 rounded-lg border-white overflow-hidden border-8 space-y-3 p-10 lg:-ml-12">
               <p className="text-5xl text-yellow-400 amiga-font color-936">936</p>
               <p className="text-2xl text-white amiga-font">UNIQUE</p>
               <p className="text-2xl text-white amiga-font">TAMADODGY</p>
@@ -55,9 +55,10 @@ const Home = () => {
               <p className="text-base text-white leading-4">These dodgy creatures earn you passive income for life. Profits go to the community.</p>
             </div>
             
-            <div className="flex-col space-y-2 pt-5 hidden md:flex">
+            <div className="flex pt-5 flex-row lg:flex-col lg:space-y-2">
               <a href="https://www.facebook.com/wix" target="_blank">
                 <img
+                  className="object-none"
                   width={200}
                   height={200}
                   src={`/images/btn_facebook.webp`}
@@ -65,6 +66,7 @@ const Home = () => {
               </a>
               <a href="https://www.twitter.com/wix" target="_blank">
                 <img
+                  className="object-none"
                   width={200}
                   height={200}
                   src={`/images/btn_tweek.webp`}
@@ -72,6 +74,7 @@ const Home = () => {
               </a>
               <a href="https://www.youtube.com/user/Wix" target="_blank">
                 <img
+                  className="object-none"
                   width={200}
                   height={200}
                   src={`/images/btn_youtube.webp`}
@@ -79,6 +82,7 @@ const Home = () => {
               </a>
               <a href="https://www.pinterest.com/user/Wix" target="_blank">
                 <img
+                  className="object-none"
                   width={200}
                   height={200}
                   src={`/images/btn_pinterest.webp`}
@@ -86,6 +90,7 @@ const Home = () => {
               </a>
               <a href="https://www.tweeks.com/user/Wix" target="_blank">
                 <img
+                  className="object-none"
                   width={200}
                   height={200}
                   src={`/images/btn_twitter.webp`}
@@ -93,6 +98,7 @@ const Home = () => {
               </a>
               <a href="https://www.instagram.com/user/Wix" target="_blank">
                 <img
+                  className="object-none"
                   width={200}
                   height={200}
                   src={`/images/btn_instagram.webp`}
@@ -102,7 +108,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="ribbon hidden md:flex flex-col space-y-2">
+        <div className="ribbon hidden lg:flex flex-col space-y-2">
           <p className="text-3xl text-white w-6/12 ml-60 mt-5 amiga-font">
             THE STORY . . .
           </p>
@@ -113,7 +119,7 @@ const Home = () => {
             All they need is the right person to adopt them and give them all the dodgy love and care. These TamaDodgy may be dodgy but they have big dreams and their properties uniquely reflect who they are and promise to reward their owners handsomely.          </p>
         </div>
 
-        <div className="grid md:grid-cols-6 sm:grid-cols-2 gap-10 mt-10 md:ml-20 md:mr-20" id="mint">
+        <div className="grid md:grid-cols-6 sm:grid-cols-2 gap-3 mt-10 md:ml-20 md:mr-20" id="mint">
           <MintCard 
             title="Baby" 
             image={`/images/babyx.webp`} 
@@ -164,7 +170,7 @@ const Home = () => {
         </div>
 
         <div className="roadmap flex flex-col justify-center items-center flex-1 mt-10 p-10" id="roadmap">
-          <p className="text-pink-400 text-7xl text-center mb-5 amiga-font">ROADMAP</p>
+          <p className="text-pink-400 lg:text-7xl md:text-6xl text-4xl text-center mb-5 amiga-font">ROADMAP</p>
 
           <RoadMap
             title="P1"
@@ -188,9 +194,9 @@ const Home = () => {
           />
         </div>
 
-        <div className="flex flex-col justify-center items-center flex-1 mt-5">
-          <p className="text-pink-400 text-7xl text-center amiga-font mt-5">TEAM MEMBERS</p>
-          <div className="grid md:grid-cols-4 sm:grid-cols-1 gap-10 mt-5 md:w-9/12">
+        <div className="flex flex-col justify-center items-center flex-1 mt-5 mb-10">
+          <p className="text-pink-400 lg:text-7xl md:text-5xl text-4xl text-center amiga-font mt-5">TEAM MEMBERS</p>
+          <div className="grid lg:grid-cols-4 grid-cols-1 gap-5 mt-5 lg:w-9/12">
             <Member
               image={`/images/kilibe.webp`}
               name="Kilibe"
@@ -218,19 +224,19 @@ const Home = () => {
           <img
             width="200"
             height="200"
-            className="absolute inset-x-16 -top-20 md:visible sm:invisible"
+            className="absolute inset-x-16 -top-20 lg:visible invisible"
             src={`/images/cloud.webp`}
             alt="MMTCHI" />
           <img
             width="170"
             height="170"
-            className="absolute right-16 top-20 md:visible sm:invisible"
+            className="absolute right-16 top-20 lg:visible invisible"
             src={`/images/cloud.webp`}
             alt="MMTCHI" />
           <img
             width="170"
             height="170"
-            className="absolute left-16 -bottom-20 md:visible sm:invisible"
+            className="absolute left-16 -bottom-20 lg:visible invisible"
             src={`/images/cloud.webp`}
             alt="MMTCHI" />
           <div className="background-qa w-full md:w-9/12 mx-auto p-8 amiga-font">
