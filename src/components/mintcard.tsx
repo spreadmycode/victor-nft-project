@@ -5,8 +5,33 @@ export const MintCard = ({
   gifImage,
   price,
   onClick,
-  disabled,
+  isSoldOut,
+  isMinting,
+  isActive,
 }: any) => {
+
+  let buttonClassName = "flex justify-center items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-36";
+  let disabled = isMinting || isSoldOut || !isActive;
+  if (disabled) {
+    buttonClassName = "flex justify-center items-center bg-blue-500 text-white font-bold py-2 px-4 opacity-50 rounded-full cursor-not-allowed w-36";
+  }
+
+  let buttonContent: any = "MINT";
+  
+  if (isMinting) {
+    buttonContent = <div>
+                        <div style={{borderTopColor: "transparent"}}
+                            className="w-8 h-8 border-4 border-blue-400 border-solid rounded-full animate-spin"></div>
+                    </div>;
+  }
+
+  if (isSoldOut) {
+    buttonContent = "SOLD OUT";
+  }
+  
+  if (!isActive) {
+    buttonContent = "NOT YET";
+  }
 
   return <div className="m-2 col-span-2 p-5 flex flex-col justify-center items-center flex-1 space-y-3 bg-white rounded-lg mint-card">
       <p className="lg:text-3xl text-1xl text-blue-400 text-center amiga-font color-lightcyan">{title}</p>
@@ -31,11 +56,11 @@ export const MintCard = ({
         <p className="ml-3">{price}</p>
       </div>
       <button
-        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded w-6/12"
+        className={buttonClassName}
         onClick={onClick}
         disabled={disabled}
       >
-        MINT
+        {buttonContent}
       </button>
     </div>;
 };

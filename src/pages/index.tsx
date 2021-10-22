@@ -127,7 +127,9 @@ const Home = () => {
             gifImage={`/images/baby.gif`}
             price="1.0 SOL"
             onClick={onMint}
-            disabled={isSoldOut || isMinting || !isActive}
+            isSoldOut
+            isMinting
+            isActive
           />
           <MintCard 
             title="TODDLER" 
@@ -136,7 +138,9 @@ const Home = () => {
             gifImage={`/images/toddler.gif`}
             price="1.0 SOL"
             onClick={onMint}
-            disabled={isSoldOut || isMinting || !isActive}
+            isSoldOut
+            isMinting
+            isActive
           />
           <MintCard 
             title="TEENAGER" 
@@ -145,7 +149,9 @@ const Home = () => {
             gifImage={`/images/teenager.gif`}
             price="1.0 SOL"
             onClick={onMint}
-            disabled={isSoldOut || isMinting || !isActive}
+            isSoldOut
+            isMinting
+            isActive
           />
           <div className="col-span-1"></div>
           <MintCard 
@@ -155,7 +161,9 @@ const Home = () => {
             gifImage={`/images/adult.gif`}
             price="1.5 SOL"
             onClick={onMint}
-            disabled={isSoldOut || isMinting || !isActive}
+            isSoldOut
+            isMinting
+            isActive
           />
           <MintCard 
             title="MYSTERY" 
@@ -164,7 +172,9 @@ const Home = () => {
             gifImage={`/images/adult.gif`}
             price="2.0 SOL"
             onClick={onMint}
-            disabled={isSoldOut || isMinting || !isActive}
+            isSoldOut
+            isMinting
+            isActive
           />
           <div className="col-span-1"></div>
         </div>
