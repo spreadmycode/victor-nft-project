@@ -29,7 +29,7 @@ const Home = () => {
       <Head>
         <title>TAMADODGY</title>
         <meta name="description" content="You can purchase TAMADODGY." />
-        <link rel="icon" href="/mmtchi.ico" />
+        <link rel="icon" href="/mmtchi.png" />
       </Head>
 
       <Header />
