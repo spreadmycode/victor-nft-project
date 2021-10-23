@@ -135,7 +135,7 @@ const Home = () => {
             onMint={candyMachine1.onMint}
             onPackMint={candyMachine1.onMintMultiple}
             isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting}
+            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
             isActive={isActive}
             nftsData={candyMachine1.nftsData}
           />
@@ -148,7 +148,7 @@ const Home = () => {
             onMint={candyMachine1.onMint}
             onPackMint={candyMachine1.onMintMultiple}
             isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting}
+            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
             isActive={isActive}
             nftsData={candyMachine1.nftsData}
           />
@@ -161,7 +161,7 @@ const Home = () => {
             onMint={candyMachine1.onMint}
             onPackMint={candyMachine1.onMintMultiple}
             isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting}
+            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
             isActive={isActive}
             nftsData={candyMachine1.nftsData}
           />
@@ -175,7 +175,7 @@ const Home = () => {
             onMint={candyMachine2.onMint}
             onPackMint={candyMachine2.onMintMultiple}
             isSoldOut={candyMachine2.isSoldOut}
-            isMinting={candyMachine2.isMinting}
+            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
             isActive={isActive}
             nftsData={candyMachine2.nftsData}
           />
@@ -188,7 +188,7 @@ const Home = () => {
             onMint={candyMachine2.onMint}
             onPackMint={candyMachine2.onMintMultiple}
             isSoldOut={candyMachine2.isSoldOut}
-            isMinting={candyMachine2.isMinting}
+            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
             isActive={isActive}
             nftsData={candyMachine2.nftsData}
           />
