@@ -24,9 +24,9 @@ const Home = () => {
   const candyMachine1 = useCandyMachine(
     CANDY_MACHINE1_ID, CANDY_MACHINE1_CONFIG, CANDY_MACHINE1_PRICE_SOL, CANDY_START_DATE
   );
-  const candyMachine2 = useCandyMachine(
-    CANDY_MACHINE2_ID, CANDY_MACHINE2_CONFIG, CANDY_MACHINE2_PRICE_SOL, CANDY_START_DATE
-  );
+  // const candyMachine2 = useCandyMachine(
+  //   CANDY_MACHINE2_ID, CANDY_MACHINE2_CONFIG, CANDY_MACHINE2_PRICE_SOL, CANDY_START_DATE
+  // );
 
   return (
     <main className="main-container">
@@ -135,7 +135,7 @@ const Home = () => {
             onMint={candyMachine1.onMint}
             onPackMint={candyMachine1.onMintMultiple}
             isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
+            isMinting={candyMachine1.isMinting}
             isActive={isActive}
             nftsData={candyMachine1.nftsData}
           />
@@ -148,7 +148,7 @@ const Home = () => {
             onMint={candyMachine1.onMint}
             onPackMint={candyMachine1.onMintMultiple}
             isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
+            isMinting={candyMachine1.isMinting}
             isActive={isActive}
             nftsData={candyMachine1.nftsData}
           />
@@ -161,7 +161,7 @@ const Home = () => {
             onMint={candyMachine1.onMint}
             onPackMint={candyMachine1.onMintMultiple}
             isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
+            isMinting={candyMachine1.isMinting}
             isActive={isActive}
             nftsData={candyMachine1.nftsData}
           />
@@ -172,12 +172,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/adult.gif`}
             price="1.5 SOL"
-            onMint={candyMachine2.onMint}
-            onPackMint={candyMachine2.onMintMultiple}
-            isSoldOut={candyMachine2.isSoldOut}
-            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
+            onMint={candyMachine1.onMint}
+            onPackMint={candyMachine1.onMintMultiple}
+            isSoldOut={candyMachine1.isSoldOut}
+            isMinting={candyMachine1.isMinting}
             isActive={isActive}
-            nftsData={candyMachine2.nftsData}
+            nftsData={candyMachine1.nftsData}
           />
           <MintCard 
             title="MYSTERY" 
@@ -185,12 +185,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/adult.gif`}
             price="2.0 SOL"
-            onMint={candyMachine2.onMint}
-            onPackMint={candyMachine2.onMintMultiple}
-            isSoldOut={candyMachine2.isSoldOut}
-            isMinting={candyMachine1.isMinting || candyMachine2.isMinting}
+            onMint={candyMachine1.onMint}
+            onPackMint={candyMachine1.onMintMultiple}
+            isSoldOut={candyMachine1.isSoldOut}
+            isMinting={candyMachine1.isMinting}
             isActive={isActive}
-            nftsData={candyMachine2.nftsData}
+            nftsData={candyMachine1.nftsData}
           />
           <div className="col-span-1"></div>
         </div>
