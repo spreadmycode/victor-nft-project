@@ -194,10 +194,10 @@ export default function useCandyMachine(_candyMachineId: string, _config: string
       setIsMinting(true);
 
       // Check current wallet can mint
-      if (!checkMintPossible()) {
-        setIsMinting(false);
-        return;
-      }
+      // if (!checkMintPossible()) {
+      //   setIsMinting(false);
+      //   return;
+      // }
 
       const anchorWallet = {
         publicKey: wallet.publicKey,
