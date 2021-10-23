@@ -12,7 +12,8 @@ import { RoadMap } from '../components/roadmap';
 
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
-  const candyMachine1 = useCandyMachine();
+
+  const candyMachine = useCandyMachine();
 
   return (
     <main className="main-container">
@@ -25,7 +26,7 @@ const Home = () => {
         <link rel="icon" href="/mmtchi.png" />
       </Head>
 
-      <Header isActive={isActive} setIsActive={setIsActive} mintStartDate={candyMachine1.mintStartDate} />
+      <Header isActive={isActive} setIsActive={setIsActive} mintStartDate={candyMachine.mintStartDate} />
 
       <div className="flex flex-col justify-center items-center flex-1 mt-20">
 
@@ -118,12 +119,12 @@ const Home = () => {
             description="26 Characters Random Generated with 3 Style of Shell and Background 26 Characters Random Generated with 3 Style of Shell and Background"
             gifImage={`/images/baby.gif`}
             price="1.0 SOL"
-            onMint={candyMachine1.onMint}
-            onPackMint={candyMachine1.onMintMultiple}
-            isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting}
+            onMint={candyMachine.onMint}
+            onPackMint={candyMachine.onMintMultiple}
+            isSoldOut={candyMachine.isSoldOut}
+            isMinting={candyMachine.isMinting}
             isActive={isActive}
-            nftsData={candyMachine1.nftsData}
+            nftsData={candyMachine.nftsData}
           />
           <MintCard 
             title="TODDLER" 
@@ -131,12 +132,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/toddler.gif`}
             price="1.0 SOL"
-            onMint={candyMachine1.onMint}
-            onPackMint={candyMachine1.onMintMultiple}
-            isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting}
+            onMint={candyMachine.onMint}
+            onPackMint={candyMachine.onMintMultiple}
+            isSoldOut={candyMachine.isSoldOut}
+            isMinting={candyMachine.isMinting}
             isActive={isActive}
-            nftsData={candyMachine1.nftsData}
+            nftsData={candyMachine.nftsData}
           />
           <MintCard 
             title="TEENAGER" 
@@ -144,12 +145,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/teenager.gif`}
             price="1.0 SOL"
-            onMint={candyMachine1.onMint}
-            onPackMint={candyMachine1.onMintMultiple}
-            isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting}
+            onMint={candyMachine.onMint}
+            onPackMint={candyMachine.onMintMultiple}
+            isSoldOut={candyMachine.isSoldOut}
+            isMinting={candyMachine.isMinting}
             isActive={isActive}
-            nftsData={candyMachine1.nftsData}
+            nftsData={candyMachine.nftsData}
           />
           <div className="col-span-1"></div>
           <MintCard 
@@ -158,25 +159,25 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/adult.gif`}
             price="1.5 SOL"
-            onMint={candyMachine1.onMint}
-            onPackMint={candyMachine1.onMintMultiple}
-            isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting}
+            onMint={candyMachine.onMint}
+            onPackMint={candyMachine.onMintMultiple}
+            isSoldOut={candyMachine.isSoldOut}
+            isMinting={candyMachine.isMinting}
             isActive={isActive}
-            nftsData={candyMachine1.nftsData}
+            nftsData={candyMachine.nftsData}
           />
           <MintCard 
             title="MYSTERY" 
             image={`/images/mystery.webp`} 
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
-            gifImage={`/images/adult.gif`}
+            gifImage={null}
             price="2.0 SOL"
-            onMint={candyMachine1.onMint}
-            onPackMint={candyMachine1.onMintMultiple}
-            isSoldOut={candyMachine1.isSoldOut}
-            isMinting={candyMachine1.isMinting}
+            onMint={candyMachine.onMint}
+            onPackMint={candyMachine.onMintMultiple}
+            isSoldOut={candyMachine.isSoldOut}
+            isMinting={candyMachine.isMinting}
             isActive={isActive}
-            nftsData={candyMachine1.nftsData}
+            nftsData={candyMachine.nftsData}
           />
           <div className="col-span-1"></div>
         </div>
@@ -196,6 +197,3 @@ const Home = () => {
 };
 
 export default Home;
-
-
-

@@ -44,13 +44,19 @@ export const MintCard = ({
       <p className="text-sm leading-4 break-normal h-36 overflow-y-auto ml-5 mr-5 text-center">
         {description}
       </p>
-      {gifImage &&
-      <img
-        className="object-contain transform scale-150"
-        width="150"
-        height="150"
-        src={gifImage}
-        alt="Card" />
+      {gifImage ?
+        <img
+          className="object-contain transform scale-150"
+          width="150"
+          height="150"
+          src={gifImage}
+          alt="Card" /> :
+        <img
+          className="object-contain transform scale-150 invisible"
+          width="150"
+          height="150"
+          src={`/images/adult.gif`}
+          alt="Card" /> 
       }
       {isActive && 
         <p className="text-blue-500 text-center">
