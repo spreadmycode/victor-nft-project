@@ -7,24 +7,16 @@ import useWalletBalance from "./use-wallet-balance";
 import { LAMPORTS_PER_SOL, Keypair } from "@solana/web3.js";
 import { sleep } from "../utils/utility";
 import BN from 'bn.js';
-import { PRESALE_CONTRACT_ID, PRESALE_CONTRACT_ACCOUNT, CONTRACT_PIVATE_KEY, MINTER_STATUS } from "../utils/constants";
-
-const MINT_PRICE_SOL = Number(process.env.NEXT_MINT_PRICE_SOL)
-
-const treasury = new anchor.web3.PublicKey(
-  process.env.NEXT_PUBLIC_TREASURY_ADDRESS!
-);
-
-const config = new anchor.web3.PublicKey(
-  process.env.NEXT_PUBLIC_CANDY_MACHINE_CONFIG!
-);
-
-const candyMachineId = new anchor.web3.PublicKey(
-  process.env.NEXT_PUBLIC_CANDY_MACHINE_ID!
-);
+import { 
+  PRESALE_CONTRACT_ID, 
+  PRESALE_CONTRACT_ACCOUNT, 
+  CONTRACT_PIVATE_KEY, 
+  MINTER_STATUS,
+} from "../utils/constants";
 
 const rpcHost = process.env.NEXT_PUBLIC_SOLANA_RPC_HOST!;
 const connection = new anchor.web3.Connection(rpcHost);
+const treasury = new anchor.web3.PublicKey(process.env.NEXT_PUBLIC_TREASURY_ADDRESS!);
 
 const txTimeout = 30000;
 
@@ -34,7 +26,10 @@ interface PresaleContract {
   program: anchor.Program,
 }
 
-export default function useCandyMachine() {
+export default function useCandyMachine(_candyMachineId: string, _config: string, _mintPrice: number, _mintStartDate: string) {
+  const candyMachineId = new anchor.web3.PublicKey(_candyMachineId);
+  const config = new anchor.web3.PublicKey(_config);
+
   const [, setBalance] = useWalletBalance()
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   const [presaleContract, setPresaleContractor] = useState<PresaleContract>();
@@ -47,7 +42,7 @@ export default function useCandyMachine() {
   } as any);
   const [isMinting, setIsMinting] = useState(false);
   const [isSoldOut, setIsSoldOut] = useState(false);
-  const [mintStartDate, setMintStartDate] = useState(new Date(parseInt(process.env.NEXT_PUBLIC_CANDY_START_DATE!, 10)));
+  const [mintStartDate, setMintStartDate] = useState(new Date(parseInt(_mintStartDate, 10)));
 
   useEffect(() => {
     (async () => {
@@ -281,7 +276,7 @@ export default function useCandyMachine() {
         );
       if (wallet.connected && candyMachine?.program && wallet.publicKey) {
         const oldBalance = await connection.getBalance(wallet?.publicKey) / LAMPORTS_PER_SOL;
-        const futureBalance = oldBalance - (MINT_PRICE_SOL * quantity)
+        const futureBalance = oldBalance - (_mintPrice * quantity)
 
         const signedTransactions: any = await mintMultipleToken(
           candyMachine,

@@ -2,24 +2,20 @@ import Head from 'next/head'
 
 import { useState } from "react";
 import { Toaster } from 'react-hot-toast';
-import { useWallet } from "@solana/wallet-adapter-react";
 import useCandyMachine from '../hooks/use-candy-machine';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import useWalletBalance from '../hooks/use-wallet-balance';
-import { shortenAddress } from '../utils/candy-machine';
-import Countdown from 'react-countdown';
-import { RecaptchaButton } from '../components/recaptcha-button';
 import { MintCard } from '../components/mintcard';
+import { Faq } from '../components/faq';
+import { Members } from '../components/members';
 import { RoadMap } from '../components/roadmap';
-import { Member } from '../components/member';
+import { CANDY_MACHINE_ID, CANDY_MACHINE_CONFIG, MINT_PRICE_SOL, CANDY_START_DATE } from '../utils/constants';
 
 const Home = () => {
-  const [balance] = useWalletBalance()
   const [isActive, setIsActive] = useState(false);
-  const [packCount, setPackCount] = useState<number>(2);
-  const wallet = useWallet();
-  const { isSoldOut, mintStartDate, isMinting, onMint, onMintMultiple, nftsData } = useCandyMachine()
+  const { isSoldOut, mintStartDate, isMinting, onMint, onMintMultiple, nftsData } = useCandyMachine(
+    CANDY_MACHINE_ID, CANDY_MACHINE_CONFIG, MINT_PRICE_SOL, CANDY_START_DATE
+  );
 
   return (
     <main className="main-container">
@@ -32,7 +28,7 @@ const Home = () => {
         <link rel="icon" href="/mmtchi.png" />
       </Head>
 
-      <Header />
+      <Header isActive={isActive} setIsActive={setIsActive} mintStartDate={mintStartDate} />
 
       <div className="flex flex-col justify-center items-center flex-1 mt-20">
 
@@ -125,10 +121,12 @@ const Home = () => {
             description="26 Characters Random Generated with 3 Style of Shell and Background 26 Characters Random Generated with 3 Style of Shell and Background"
             gifImage={`/images/baby.gif`}
             price="1.0 SOL"
-            onClick={onMint}
-            isSoldOut
-            isMinting
-            isActive
+            onMint={onMint}
+            onPackMint={onMintMultiple}
+            isSoldOut={isSoldOut}
+            isMinting={isMinting}
+            isActive={isActive}
+            nftsData={nftsData}
           />
           <MintCard 
             title="TODDLER" 
@@ -136,10 +134,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/toddler.gif`}
             price="1.0 SOL"
-            onClick={onMint}
-            isSoldOut
-            isMinting
-            isActive
+            onMint={onMint}
+            onPackMint={onMintMultiple}
+            isSoldOut={isSoldOut}
+            isMinting={isMinting}
+            isActive={isActive}
+            nftsData={nftsData}
           />
           <MintCard 
             title="TEENAGER" 
@@ -147,10 +147,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/teenager.gif`}
             price="1.0 SOL"
-            onClick={onMint}
-            isSoldOut
-            isMinting
-            isActive
+            onMint={onMint}
+            onPackMint={onMintMultiple}
+            isSoldOut={isSoldOut}
+            isMinting={isMinting}
+            isActive={isActive}
+            nftsData={nftsData}
           />
           <div className="col-span-1"></div>
           <MintCard 
@@ -159,10 +161,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/adult.gif`}
             price="1.5 SOL"
-            onClick={onMint}
-            isSoldOut
-            isMinting
-            isActive
+            onMint={onMint}
+            onPackMint={onMintMultiple}
+            isSoldOut={isSoldOut}
+            isMinting={isMinting}
+            isActive={isActive}
+            nftsData={nftsData}
           />
           <MintCard 
             title="MYSTERY" 
@@ -170,200 +174,27 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/adult.gif`}
             price="2.0 SOL"
-            onClick={onMint}
-            isSoldOut
-            isMinting
-            isActive
+            onMint={onMint}
+            onPackMint={onMintMultiple}
+            isSoldOut={isSoldOut}
+            isMinting={isMinting}
+            isActive={isActive}
+            nftsData={nftsData}
           />
           <div className="col-span-1"></div>
         </div>
 
-        <div className="roadmap flex flex-col justify-center items-center flex-1 mt-10 p-10" id="roadmap">
-          <p className="text-pink-400 lg:text-7xl md:text-6xl text-4xl text-center mb-5 amiga-font">ROADMAP</p>
+        <RoadMap />
 
-          <RoadMap
-            title="P1"
-            list={['September 1 - Project launched', 'October - Partner with other dodgy projects in Solana', 'Mint Date - October 17th, 2021']}
-            image={`/images/p1.webp`}
-          />
-          <RoadMap
-            title="P2"
-            list={['20% Sold - NFT Giveaway', 'A random airdrop of 10 NFTs to early community members in our discord.​', '80% Sold - Extra Dodgy Collection', 'We will create a limited collection of Extra Dodgy TamaDodgy and make them available for holders.', '100% Sold - Virtual Pet Game', 'Commence the building of a virtual pet game of TamaDodgy where owners will be able to interact with their TamaDodgy.']}
-            image={`/images/p2.webp`}
-          />
-          <RoadMap
-            title="P3"
-            list={['Collaboration with artists on limited edition 1:1 pieces that will be available to TamaDodgy holders', 'Creation of DAO and staking for royalties']}
-            image={`/images/p3.webp`}
-          />
-          <RoadMap
-            title="P4"
-            list={['Liquidity wallet to be used to buy floor of TamaDodgy NFTs and doing charity/community projects', 'Metaverse Collabs, 3D Open World RPG']}
-            image={`/images/p4.webp`}
-          />
-        </div>
+        <Members />
 
-        <div className="flex flex-col justify-center items-center flex-1 mt-5 mb-10">
-          <p className="text-pink-400 lg:text-7xl md:text-5xl text-4xl text-center amiga-font mt-5">TEAM MEMBERS</p>
-          <div className="grid lg:grid-cols-4 grid-cols-1 gap-5 mt-5 lg:w-9/12">
-            <Member
-              image={`/images/kilibe.webp`}
-              name="Kilibe"
-              description="Avenir Light is a clean and stylish font favored by designers. It's easy on the eyes and a great go-to font for titles, paragraphs & more."
-            />
-            <Member
-              image={`/images/nana.webp`}
-              name="Nana"
-              description="Avenir Light is a clean and stylish font favored by designers. It's easy on the eyes and a great go-to font for titles, paragraphs & more."
-            />
-            <Member
-              image={`/images/k9.webp`}
-              name="K9"
-              description="Avenir Light is a clean and stylish font favored by designers. It's easy on the eyes and a great go-to font for titles, paragraphs & more."
-            />
-            <Member
-              image={`/images/Jade.webp`}
-              name="Jade"
-              description="Avenir Light is a clean and stylish font favored by designers. It's easy on the eyes and a great go-to font for titles, paragraphs & more."
-            />
-          </div>
-        </div>
-
-        <div className="m-5 relative" id="faq">
-          <img
-            width="200"
-            height="200"
-            className="absolute inset-x-16 -top-20 lg:visible invisible"
-            src={`/images/cloud.webp`}
-            alt="MMTCHI" />
-          <img
-            width="170"
-            height="170"
-            className="absolute right-16 top-20 lg:visible invisible"
-            src={`/images/cloud.webp`}
-            alt="MMTCHI" />
-          <img
-            width="170"
-            height="170"
-            className="absolute left-16 -bottom-20 lg:visible invisible"
-            src={`/images/cloud.webp`}
-            alt="MMTCHI" />
-          <div className="background-qa w-full md:w-9/12 mx-auto p-8 amiga-font">
-            <p className="text-3xl mb-5 color-magenta text-center">Frequently asked questions</p>
-            <div>
-                <div className="tab w-full overflow-hidden border-t">
-                  <input className="absolute opacity-0" id="tab-single-one" type="radio" name="tabs2" />
-                  <label className="block p-5 leading-normal cursor-pointer" htmlFor="tab-single-one">How can I mint the NFT?</label>
-                  <div className="tab-content overflow-hidden leading-normal">
-                      <p className="p-5">Click "CONNECT" on the upper right corner to connect your Solana Wallet. Click on the NFT you wish to mint and approve the transaction.</p>
-                  </div>
-                </div>
-                <div className="tab w-full overflow-hidden border-t">
-                  <input className="absolute opacity-0" id="tab-single-two" type="radio" name="tabs2" />
-                  <label className="block p-5 leading-normal cursor-pointer" htmlFor="tab-single-two">Are there a limit with how many NFT I can mint?</label>
-                  <div className="tab-content overflow-hidden leading-normal">
-                      <p className="p-5">No, user can mint as much as they want as long as the supplies last.</p>
-                  </div>
-                </div>
-                <div className="tab w-full overflow-hidden border-t">
-                  <input className="absolute opacity-0" id="tab-single-three" type="radio" name="tabs2" />
-                  <label className="block p-5 leading-normal cursor-pointer" htmlFor="tab-single-three">Can I resell the NFT?</label>
-                  <div className="tab-content overflow-hidden leading-normal">
-                      <p className="p-5">Yes, owner can resell their NFT whenever they want, there will be a 10% royality fee.</p>
-                  </div>
-                </div>
-                <div className="tab w-full overflow-hidden border-t">
-                  <input className="absolute opacity-0" id="tab-single-four" type="radio" name="tabs2" />
-                  <label className="block p-5 leading-normal cursor-pointer" htmlFor="tab-single-four">Will the team release more collection?</label>
-                  <div className="tab-content overflow-hidden leading-normal">
-                      <p className="p-5">Yes, we have plans to release another collection, we are already working on the art and we will make an announcement very soon.</p>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </div>
-
-        <Footer />
-
-        <div className="hidden">
-          {wallet.connected &&
-            <p className="text-gray-800 font-bold text-lg cursor-default">Address: {shortenAddress(wallet.publicKey?.toBase58() || "")}</p>
-          }
-
-          {wallet.connected &&
-            <>
-              <p className="text-gray-800 font-bold text-lg cursor-default">Balance: {(balance || 0).toLocaleString()} SOL</p>
-              <p className="text-gray-800 font-bold text-lg cursor-default">Available: {nftsData.itemsRemaining}</p>
-              <p className="text-gray-800 font-bold text-lg cursor-default">Minted: {nftsData.itemsRedeemed}</p>
-              <p className="text-gray-800 font-bold text-lg cursor-default">Total: {nftsData.itemsAvailable}</p>
-            </>
-          }
-
-          <div className="flex flex-col justify-start items-start">
-            {wallet.connected &&
-              // <RecaptchaButton
-              <button
-                // actionName="mint"
-                className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5"
-                disabled={isSoldOut || isMinting || !isActive}
-                onClick={onMint}
-              >
-                {isSoldOut ? (
-                  "SOLD OUT"
-                ) : isActive ?
-                  <span>MINT {isMinting && 'LOADING...'}</span> :
-                  <Countdown
-                    date={mintStartDate}
-                    onMount={({ completed }) => completed && setIsActive(true)}
-                    onComplete={() => setIsActive(true)}
-                    renderer={renderCounter}
-                  />
-                }
-              </button>
-              // </RecaptchaButton>
-            }
-
-            {wallet.connected &&
-            <>
-              <input type="number" className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-5" 
-                step={1} min={2} max={5} value={packCount} 
-                onChange={(e) => { setPackCount(Number.parseInt(e.target.value)); }} 
-              />
-              {/* <RecaptchaButton */}
-              <button
-                // actionName="mint5"
-                className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-2"
-                disabled={isSoldOut || isMinting || !isActive}
-                onClick={() => onMintMultiple(packCount)}
-              >
-                {isSoldOut ? (
-                  "SOLD OUT"
-                ) : isActive ?
-                  <span>{packCount} NFTs {isMinting && 'LOADING...'}</span> :
-                  <Countdown
-                    date={mintStartDate}
-                    onMount={({ completed }) => completed && setIsActive(true)}
-                    onComplete={() => setIsActive(true)}
-                    renderer={renderCounter}
-                  />
-                }
-              </button>
-              {/* </RecaptchaButton> */}
-            </>
-            }
-          </div>
-        </div>
+        <Faq />
 
       </div>
-    </main>
-  );
-};
 
-const renderCounter = ({ days, hours, minutes, seconds }: any) => {
-  return (
-    <span className="text-gray-800 font-bold text-2xl cursor-default">
-      Live in {days} days, {hours} hours, {minutes} minutes, {seconds} seconds
-    </span>
+      <Footer />
+
+    </main>
   );
 };
 

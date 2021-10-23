@@ -1,13 +1,17 @@
+import { RecaptchaButton } from '../components/recaptcha-button';
+
 export const MintCard = ({
   title,
   image,
   description,
   gifImage,
   price,
-  onClick,
+  onMint,
+  onPackMint,
   isSoldOut,
   isMinting,
   isActive,
+  nftsData,
 }: any) => {
 
   let buttonClassName = "flex justify-center items-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full w-36";
@@ -17,12 +21,11 @@ export const MintCard = ({
   }
 
   let buttonContent: any = "MINT";
-  
   if (isMinting) {
     buttonContent = <div>
-                        <div style={{borderTopColor: "transparent"}}
-                            className="w-8 h-8 border-4 border-blue-400 border-solid rounded-full animate-spin"></div>
-                    </div>;
+      <div style={{borderTopColor: "transparent"}}
+        className="w-8 h-8 border-4 border-blue-400 border-solid rounded-full animate-spin"></div>
+    </div>;
   }
 
   if (isSoldOut) {
@@ -43,11 +46,11 @@ export const MintCard = ({
       </p>
       {gifImage &&
       <img
-          className="object-contain transform scale-150"
-          width="150"
-          height="150"
-          src={gifImage}
-          alt="Card" />
+        className="object-contain transform scale-150"
+        width="150"
+        height="150"
+        src={gifImage}
+        alt="Card" />
       }
       <div className="flex flex-row items-center">
         <img
@@ -57,7 +60,7 @@ export const MintCard = ({
       </div>
       <button
         className={buttonClassName}
-        onClick={onClick}
+        onClick={onMint}
         disabled={disabled}
       >
         {buttonContent}

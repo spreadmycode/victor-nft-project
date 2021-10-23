@@ -14,3 +14,8 @@ export const MINTER_STATUS = {
     PreSaleEnded        : 4,
     PreSaleNotStarted   : 5,
 };
+
+export const MINT_PRICE_SOL         = 0.3;
+export const CANDY_MACHINE_ID       = "7WaPJdjbtFb66TGcjxe7tWw4riVVjzZNXqcWxHQ88Kdq";
+export const CANDY_MACHINE_CONFIG   = "Ey8kgnAkYkx83dxA52ovWr8WqmSAfxUyvUaq666h4KgT";
+export const CANDY_START_DATE       = "1731750400000";
