@@ -131,7 +131,8 @@ export default function useCandyMachine(_candyMachineId: string, _config: string
 
   const checkMintPossible = async () => {
     if (wallet.connected && wallet.publicKey) {
-      let currentMilis: number = Date.now();
+      let date = new Date();
+      let currentMilis: number = Date.parse(date.toUTCString());
       await presaleContract?.program.rpc.checkMintPossible(
         wallet.publicKey?.toBase58(),
         new BN(currentMilis),
@@ -150,6 +151,7 @@ export default function useCandyMachine(_candyMachineId: string, _config: string
       switch (checkStatus) {
         case MINTER_STATUS.Available:
           toast.success("You are in whitelist.");
+          return true;
         case MINTER_STATUS.PreSaleEnded:
           toast.success("You can mint NFT now.");
           return true;
