@@ -231,7 +231,7 @@ export default function useCandyMachine(_candyMachineId: string, _config: string
           toast.success("Congratulations! Mint succeeded! Check the 'My Arts' page :)");
 
           // Update account data of pre-sale smart contract
-          await updatePresaleContractAccount();
+          // await updatePresaleContractAccount();
 
         } else {
           toast.error("Mint failed! Please try again!");
