@@ -15,7 +15,12 @@ export const MINTER_STATUS = {
     PreSaleNotStarted   : 5,
 };
 
-export const MINT_PRICE_SOL         = 0.3;
-export const CANDY_MACHINE_ID       = "7WaPJdjbtFb66TGcjxe7tWw4riVVjzZNXqcWxHQ88Kdq";
-export const CANDY_MACHINE_CONFIG   = "Ey8kgnAkYkx83dxA52ovWr8WqmSAfxUyvUaq666h4KgT";
-export const CANDY_START_DATE       = "1731750400000";
+export const CANDY_START_DATE           = "1631750400000";
+
+export const CANDY_MACHINE1_PRICE_SOL   = 1;
+export const CANDY_MACHINE1_ID          = "29psGubQRdXHDArtt27QwezWH2sSgvxK3PJRnvEkqick";
+export const CANDY_MACHINE1_CONFIG      = "3vNYDmfRFFQo5cb2Asww3kNTZ71zX2CwvyFPB3bct6ww";
+
+export const CANDY_MACHINE2_PRICE_SOL   = 2;
+export const CANDY_MACHINE2_ID          = "DgXnb59NKuGjp8voL9kbvsvyyVjb7sueWw7pVdXkziSJ";
+export const CANDY_MACHINE2_CONFIG      = "DWox2j9ehSAR1iKLbCot4kvDYByDYVN39CBMZNsP3tKS";

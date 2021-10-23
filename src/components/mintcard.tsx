@@ -52,6 +52,11 @@ export const MintCard = ({
         src={gifImage}
         alt="Card" />
       }
+      {isActive && 
+        <p className="text-blue-500 text-center">
+          {nftsData.itemsRedeemed} / {nftsData.itemsAvailable}
+        </p>
+      }
       <div className="flex flex-row items-center">
         <img
           src={`/images/sol icon.webp`}
