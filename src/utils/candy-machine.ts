@@ -9,7 +9,7 @@ import { Metadata } from '@metaplex/js';
 import axios from "axios";
 import { sendTransactions } from "./utility";
 import { fetchHashTable } from "../hooks/use-hash-table";
-import { CANDY_MACHINE_ID } from "./constants";
+import { CANDY_MACHINE1_ID, CANDY_MACHINE2_ID } from "./constants";
 
 export const CANDY_MACHINE_PROGRAM = new anchor.web3.PublicKey(
   "cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ"
@@ -237,7 +237,7 @@ const getTokenWallet = async (
 };
 
 export async function getNftsForOwner(connection: anchor.web3.Connection, ownerAddress: anchor.web3.PublicKey) {
-  const allMintsCandyMachine = await fetchHashTable(CANDY_MACHINE_ID);
+  const allMintsCandyMachine = await fetchHashTable(CANDY_MACHINE1_ID);
   const allTokens: any = []
   const tokenAccounts = await connection.getParsedTokenAccountsByOwner(ownerAddress, {
     programId: TOKEN_PROGRAM_ID
