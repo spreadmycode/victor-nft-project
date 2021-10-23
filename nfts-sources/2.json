@@ -3,7 +3,7 @@
   "symbol": "TSTX",
   "description": "TEST",
   "seller_fee_basis_points": 500,
-  "image": "image.gif",
+  "image": "image.png",
   "external_url": "https://yourwebsite.com/details/0",
   "attributes": [
     {
@@ -30,8 +30,8 @@
   "properties": {
     "files": [
       {
-        "uri": "image.gif",
-        "type": "image/gif"
+        "uri": "image.png",
+        "type": "image/png"
       }
     ],
     "category": "image",

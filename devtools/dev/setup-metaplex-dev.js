@@ -34,10 +34,10 @@ async function setupMetaplexDev() {
   const splittedContent = fileContent.split('\n')
   const mintPrice = await getMintPrice()
   fs.writeFileSync(`${__dirname}/../../logs/dev/mint-price.txt`, String(mintPrice))
-  splittedContent[5] = `ts-node /home/work/metaplex/js/packages/cli/src/candy-machine-cli.ts create_candy_machine --env devnet --keypair ~/.config/solana/candyfactory-devnet.json --price ${mintPrice || 1} > ./logs/dev/candy-machine-log.txt`
+  splittedContent[5] = `ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts create_candy_machine --env devnet --keypair ~/.config/solana/candyfactory-devnet.json --price ${mintPrice || 1} > ./logs/dev/candy-machine-log.txt`
 
   const startDate = await getStartDate()
-  splittedContent[7] = `ts-node /home/work/metaplex/js/packages/cli/src/candy-machine-cli.ts update_candy_machine -d "${startDate || '16 Sep 2021 00:00:00 UTC'}" --env devnet --keypair ~/.config/solana/candyfactory-devnet.json > ./logs/dev/candy-machine-start-date.txt`
+  splittedContent[7] = `ts-node ~/metaplex-foundation/metaplex/js/packages/cli/src/candy-machine-cli.ts update_candy_machine -d "${startDate || '16 Sep 2021 00:00:00 UTC'}" --env devnet --keypair ~/.config/solana/candyfactory-devnet.json > ./logs/dev/candy-machine-start-date.txt`
 
   fs.unlinkSync('./devtools/dev/setup-metaplex-dev.sh')
   fs.writeFileSync('./devtools/dev/setup-metaplex-dev.sh', splittedContent.join(`\n`))

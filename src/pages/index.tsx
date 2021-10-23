@@ -9,24 +9,10 @@ import { MintCard } from '../components/mintcard';
 import { Faq } from '../components/faq';
 import { Members } from '../components/members';
 import { RoadMap } from '../components/roadmap';
-import { 
-  CANDY_START_DATE,
-  CANDY_MACHINE1_ID, 
-  CANDY_MACHINE1_CONFIG, 
-  CANDY_MACHINE1_PRICE_SOL, 
-  CANDY_MACHINE2_ID, 
-  CANDY_MACHINE2_CONFIG, 
-  CANDY_MACHINE2_PRICE_SOL, 
-} from '../utils/constants';
 
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
-  const candyMachine1 = useCandyMachine(
-    CANDY_MACHINE1_ID, CANDY_MACHINE1_CONFIG, CANDY_MACHINE1_PRICE_SOL, CANDY_START_DATE
-  );
-  // const candyMachine2 = useCandyMachine(
-  //   CANDY_MACHINE2_ID, CANDY_MACHINE2_CONFIG, CANDY_MACHINE2_PRICE_SOL, CANDY_START_DATE
-  // );
+  const candyMachine1 = useCandyMachine();
 
   return (
     <main className="main-container">
