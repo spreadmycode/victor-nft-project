@@ -194,10 +194,10 @@ export default function useCandyMachine(_candyMachineId: string, _config: string
       setIsMinting(true);
 
       // Check current wallet can mint
-      // if (!checkMintPossible()) {
-      //   setIsMinting(false);
-      //   return;
-      // }
+      if (!checkMintPossible()) {
+        setIsMinting(false);
+        return;
+      }
 
       const anchorWallet = {
         publicKey: wallet.publicKey,
@@ -231,7 +231,7 @@ export default function useCandyMachine(_candyMachineId: string, _config: string
           toast.success("Congratulations! Mint succeeded! Check the 'My Arts' page :)");
 
           // Update account data of pre-sale smart contract
-          // await updatePresaleContractAccount();
+          await updatePresaleContractAccount();
 
         } else {
           toast.error("Mint failed! Please try again!");
