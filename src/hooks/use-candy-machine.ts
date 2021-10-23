@@ -149,7 +149,9 @@ export default function useCandyMachine(_candyMachineId: string, _config: string
 
       switch (checkStatus) {
         case MINTER_STATUS.Available:
+          toast.success("You are in whitelist.");
         case MINTER_STATUS.PreSaleEnded:
+          toast.success("You can mint NFT now.");
           return true;
         case MINTER_STATUS.AlreadyMinted:
           toast.error("Mint failed! You've already MINT!")
