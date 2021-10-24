@@ -104,8 +104,8 @@ export default function usePreSaleContract() {
             },
           );
           const data: any = await presaleContract?.program.account.data.fetch(presaleContract.account);
-          const checkStatus = data.checkStatus.toNumber();
-          const whitelistIndex = data.whitelistIndex.toNumber();
+          const checkStatus = data.checkStatus;
+          const whitelistIndex = data.whitelistIndex;
           setPresaleStatus(checkStatus);
           setPresaleIndex(whitelistIndex);
     
