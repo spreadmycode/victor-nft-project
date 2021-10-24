@@ -4,9 +4,8 @@ import React from 'react';
 import Link from 'next/link'
 import Countdown from 'react-countdown';
 import { shortenAddress } from '../utils/candy-machine';
-import { MINTER_STATUS } from '../utils/constants';
 
-const Header = ({ isActive, setIsActive, mintStartDate, presaleContract }: any) => {
+const Header = ({ isActive, setIsActive, mintStartDate, presaleStartDate, presaleEndDate }: any) => {
 
   const wallet = useWallet();
 
@@ -28,7 +27,7 @@ const Header = ({ isActive, setIsActive, mintStartDate, presaleContract }: any) 
 
   let presaleRender = false;
   let now = new Date();
-  if (now.getTime() >= presaleContract.presaleStartDate.getTime() && now.getTime() <= presaleContract.presaleEndDate.getTime()) {
+  if (now.getTime() >= presaleStartDate.getTime() && now.getTime() <= presaleEndDate.getTime()) {
     presaleRender = true;
   }
 
@@ -69,7 +68,7 @@ const Header = ({ isActive, setIsActive, mintStartDate, presaleContract }: any) 
     />}
 
     {presaleRender && <Countdown
-      date={presaleContract.presaleEndDate}
+      date={presaleEndDate}
       onMount={({ completed }) => completed && setIsActive(true)}
       renderer={renderPresaleCounter}
     />}

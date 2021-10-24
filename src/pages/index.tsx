@@ -43,7 +43,8 @@ const Home = () => {
         isActive={isActive} 
         setIsActive={setIsActive} 
         mintStartDate={candyMachineBaby.mintStartDate} 
-        presaleContract={presaleContract}
+        presaleStartDate={presaleContract.presaleStartDate}
+        presaleEndDate={presaleContract.presaleEndDate}
       />
 
       <div className="flex flex-col justify-center items-center flex-1 mt-20">
