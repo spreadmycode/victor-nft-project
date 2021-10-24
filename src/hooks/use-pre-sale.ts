@@ -38,16 +38,7 @@ export default function usePreSaleContract() {
     const wallet = useWallet();
 
     useEffect(() => {
-        (async () => {
-            if (
-                !wallet ||
-                !wallet.publicKey ||
-                !wallet.signAllTransactions ||
-                !wallet.signTransaction
-            ) {
-                return;
-            }
-        
+        (async () => {      
             // Prepare pre-sale smart contract
             const program = await loadPresaleContract();
             if (program) {
@@ -56,9 +47,9 @@ export default function usePreSaleContract() {
                     account: PRESALE_CONTRACT_ACCOUNT,
                     program
                 });
-                const data: any = await presaleContract?.program.account.data.fetch(presaleContract.account);
-                const startDate = data.presaleStartDate;
-                const endDate = data.presaleEndDate;
+                const data: any = await program.account.data.fetch(PRESALE_CONTRACT_ACCOUNT);
+                const startDate = data.presaleStartDate.toNumber();
+                const endDate = data.presaleEndDate.toNumber();
                 setPresaleStartDate(new Date(startDate));
                 setPresaleEndDate(new Date(endDate));
             }
