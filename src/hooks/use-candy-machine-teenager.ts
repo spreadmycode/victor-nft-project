@@ -4,18 +4,14 @@ import { awaitTransactionSignatureConfirmation, CandyMachine, getCandyMachineSta
 import { useWallet } from "@solana/wallet-adapter-react";
 import toast from 'react-hot-toast';
 import useWalletBalance from "./use-wallet-balance";
-import { LAMPORTS_PER_SOL, Keypair } from "@solana/web3.js";
+import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { sleep } from "../utils/utility";
-import BN from 'bn.js';
 import { 
-  PRESALE_CONTRACT_ID, 
-  PRESALE_CONTRACT_ACCOUNT, 
-  CONTRACT_PIVATE_KEY, 
-  MINTER_STATUS,
   MINT_PRICE_TEENAGER,
   CANDY_MACHINE_CONFIG_TEENAGER,
   CANDY_MACHINE_ID_TEENAGER,
 } from "../utils/constants";
+import { Presale } from "./use-pre-sale";
 
 const MINT_PRICE_SOL = Number(MINT_PRICE_TEENAGER)
 
@@ -36,17 +32,10 @@ const connection = new anchor.web3.Connection(rpcHost);
 
 const txTimeout = 30000;
 
-interface PresaleContract {
-  id: anchor.web3.PublicKey;
-  account: anchor.web3.PublicKey,
-  program: anchor.Program,
-}
+export default function useCandyMachineAdult(presaleContract: Presale) {
 
-export default function useCandyMachineTeenager() {
   const [, setBalance] = useWalletBalance()
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
-  const [presaleContract, setPresaleContractor] = useState<PresaleContract>();
-  const [whitelistIndex, setWhitelistIndex] = useState<number>(0);
   const wallet = useWallet();
   const [nftsData, setNftsData] = useState<any>({} = {
     itemsRemaining: 0,
@@ -81,16 +70,6 @@ export default function useCandyMachineTeenager() {
           connection
         );
 
-      // Prepare pre-sale smart contract
-      const program = await loadPresaleContract();
-      if (program) {
-        setPresaleContractor({
-          id: PRESALE_CONTRACT_ID,
-          account: PRESALE_CONTRACT_ACCOUNT,
-          program
-        });
-      }
-
       setIsSoldOut(itemsRemaining === 0);
       setMintStartDate(goLiveDate);
       setCandyMachine(candyMachine);
@@ -118,95 +97,11 @@ export default function useCandyMachineTeenager() {
     })();
   }, [wallet, candyMachineId, connection, isMinting]);
 
-  const loadContractPrivateKey = async () => {
-    const loaded = Keypair.fromSecretKey(
-        new Uint8Array(JSON.parse(CONTRACT_PIVATE_KEY)),
-    );
-    return loaded;
-  }
-
-  const loadPresaleContract = async () => {
-    const walletKeyPair = await loadContractPrivateKey();
-    const walletWrapper = new anchor.Wallet(walletKeyPair);
-
-    const provider = new anchor.Provider(connection, walletWrapper, {
-      preflightCommitment: 'recent',
-    });
-
-    const idl = await anchor.Program.fetchIdl(PRESALE_CONTRACT_ID, provider);
-
-    if (idl) {
-      return new anchor.Program(idl, PRESALE_CONTRACT_ID, provider);
-    } else {
-      return null;
-    }
-  }
-
-  const checkMintPossible = async () => {
-    if (wallet.connected && wallet.publicKey) {
-      let date = new Date();
-      let currentMilis: number = Date.parse(date.toUTCString());
-      await presaleContract?.program.rpc.checkMintPossible(
-        wallet.publicKey?.toBase58(),
-        new BN(currentMilis),
-        {
-          accounts: {
-            data: presaleContract.account,
-            minter: wallet?.publicKey,
-          }
-        },
-      );
-      const data: any = await presaleContract?.program.account.data.fetch(presaleContract.account);
-      const checkStatus = data.checkStatus;
-      const whitelistIndex = data.whitelistIndex;
-      setWhitelistIndex(whitelistIndex);
-
-      switch (checkStatus) {
-        case MINTER_STATUS.Available:
-          toast.success("You are in whitelist.");
-          return true;
-        case MINTER_STATUS.PreSaleEnded:
-          toast.success("You can mint NFT now.");
-          return true;
-        case MINTER_STATUS.AlreadyMinted:
-          toast.error("Mint failed! You've already MINT!")
-          break;
-        case MINTER_STATUS.NotExistInWhiteList:
-          toast.error("Mint failed! You are not in White List!")
-          break;
-        case MINTER_STATUS.PreSaleNoItem:
-          toast.error("Mint failed! Pre-Sale Sold Out!")
-          break;
-        case MINTER_STATUS.PreSaleNotStarted:
-          toast.error("Mint failed! Pre-Sale Not Started! Please wait.")
-          break;
-      }
-    } else {
-      toast.error("Please Connect Wallet.")
-    }
-
-    return false;
-  };
-
-  const updatePresaleContractAccount = async () => {
-    if (wallet.connected && wallet.publicKey) {
-      await presaleContract?.program.rpc.decreaseCount(
-        new BN(whitelistIndex),
-        {
-          accounts: {
-            data: presaleContract.account,
-            minter: wallet?.publicKey,
-          }
-        },
-      );
-    }
-  };
-
   const onMint = async () => {
     try {
       setIsMinting(true);
 
-      let possible = await checkMintPossible();
+      let possible = await presaleContract.checkMintPossible();
       // Check current wallet can mint
       if (!possible) {
         setIsMinting(false);
@@ -244,9 +139,8 @@ export default function useCandyMachineTeenager() {
         if (!status?.err) {
           toast.success("Congratulations! Mint succeeded! Check the 'My Arts' page :)");
 
-          // Update account data of pre-sale smart contract
-          await updatePresaleContractAccount();
-
+          await presaleContract.updatePresaleContractAccount();
+          
         } else {
           toast.error("Mint failed! Please try again!");
         }
@@ -371,7 +265,6 @@ export default function useCandyMachineTeenager() {
       setIsMinting(false);
     }
   };
-
 
   return { isSoldOut, mintStartDate, isMinting, nftsData, onMint, onMintMultiple }
 }

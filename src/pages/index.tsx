@@ -13,15 +13,17 @@ import useCandyMachineToddler from '../hooks/use-candy-machine-toddler';
 import useCandyMachineTeenager from '../hooks/use-candy-machine-teenager';
 import useCandyMachineAdult from '../hooks/use-candy-machine-adult';
 import useCandyMachineMystery from '../hooks/use-candy-machine-mystery';
+import usePreSaleContract, { Presale } from '../hooks/use-pre-sale';
 
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
 
-  const candyMachineBaby = useCandyMachineBaby();
-  const candyMachineToddler = useCandyMachineToddler();
-  const candyMachineTeenager = useCandyMachineTeenager();
-  const candyMachineAdult = useCandyMachineAdult();
-  const candyMachineMystery = useCandyMachineMystery();
+  const presaleContract: Presale = usePreSaleContract();
+  const candyMachineBaby = useCandyMachineBaby(presaleContract);
+  const candyMachineToddler = useCandyMachineToddler(presaleContract);
+  const candyMachineTeenager = useCandyMachineTeenager(presaleContract);
+  const candyMachineAdult = useCandyMachineAdult(presaleContract);
+  const candyMachineMystery = useCandyMachineMystery(presaleContract);
 
   // Minting status to all mint buttons
   const isMinting = candyMachineBaby.isMinting || candyMachineToddler.isMinting || candyMachineTeenager.isMinting || candyMachineAdult.isMinting || candyMachineMystery.isMinting;
@@ -37,7 +39,12 @@ const Home = () => {
         <link rel="icon" href="/mmtchi.png" />
       </Head>
 
-      <Header isActive={isActive} setIsActive={setIsActive} mintStartDate={candyMachineBaby.mintStartDate} />
+      <Header 
+        isActive={isActive} 
+        setIsActive={setIsActive} 
+        mintStartDate={candyMachineBaby.mintStartDate} 
+        presaleContract={presaleContract}
+      />
 
       <div className="flex flex-col justify-center items-center flex-1 mt-20">
 
