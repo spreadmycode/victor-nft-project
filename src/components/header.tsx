@@ -27,8 +27,10 @@ const Header = ({ isActive, setIsActive, mintStartDate, presaleStartDate, presal
 
   let presaleRender = false;
   let now = new Date();
-  if (now.getTime() >= presaleStartDate.getTime() && now.getTime() <= presaleEndDate.getTime()) {
-    presaleRender = true;
+  if (presaleStartDate && presaleEndDate) {
+    if (now.getTime() >= presaleStartDate.getTime() && now.getTime() <= presaleEndDate.getTime()) {
+      presaleRender = true;
+    }
   }
 
   return <div className="flex flex-col space-y-5 items-center justify-center">

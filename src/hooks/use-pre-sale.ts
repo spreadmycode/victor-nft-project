@@ -39,6 +39,15 @@ export default function usePreSaleContract() {
 
     useEffect(() => {
         (async () => {      
+            if (
+            !wallet ||
+            !wallet.publicKey ||
+            !wallet.signAllTransactions ||
+            !wallet.signTransaction
+            ) {
+                return;
+            }
+
             // Prepare pre-sale smart contract
             const program = await loadPresaleContract();
             if (program) {
