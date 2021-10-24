@@ -120,15 +120,26 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="ribbon hidden lg:flex flex-col space-y-2">
-          <p className="text-3xl text-white w-6/12 ml-60 mt-5 amiga-font">
-            THE STORY . . .
-          </p>
-          <p className="text-sm text-white w-6/12 ml-60 mt-5 leading-4">
-            TamaDodgy is inspired by the Millennial childhood Tamagochi Egg Watch handheld digital pet that was created in Japan by Akihiro Yokoi in 1997. They are the spawn of what happens when you have a bunch of 1997 pet creatures mixed with the 2021dodgy pixelated punk world. This lot are looking for a new home and are up for adoption. They were originally going to Ethereum, but they were too dodgy for Vitalik. So the TamaDodgy decided to spawn in the more dodgy island - Solana, the blockchain of every dodgy pixel's dream, by the extra dodgy Sam.
-          </p>
-          <p className="text-sm text-white w-6/12 ml-60 mt-5 leading-4">
-            All they need is the right person to adopt them and give them all the dodgy love and care. These TamaDodgy may be dodgy but they have big dreams and their properties uniquely reflect who they are and promise to reward their owners handsomely.          </p>
+        <div className="ribbon hidden lg:flex lg:flex-row relative">
+          <div className="flex flex-col space-y-3 w-6/12 ml-60 mt-5">
+            <p className="text-3xl text-white amiga-font">
+              THE STORY .....
+            </p>
+            <div className="h-40 overflow-y-auto flex flex-col space-y-1">
+              <p className="text-sm text-white leading-4">
+                TamaDodgy is inspired by the Millennial childhood Tamagochi Egg Watch handheld digital pet that was created in Japan by Akihiro Yokoi in 1997. They are the spawn of what happens when you have a bunch of 1997 pet creatures mixed with the 2021dodgy pixelated punk world. This lot are looking for a new home and are up for adoption. They were originally going to Ethereum, but they were too dodgy for Vitalik. So the TamaDodgy decided to spawn in the more dodgy island - Solana, the blockchain of every dodgy pixel's dream, by the extra dodgy Sam.
+              </p>
+              <p className="text-sm text-white leading-4">
+                All they need is the right person to adopt them and give them all the dodgy love and care. These TamaDodgy may be dodgy but they have big dreams and their properties uniquely reflect who they are and promise to reward their owners handsomely.
+              </p>
+            </div>
+          </div>
+          <div className="start-date-badge flex flex-col space-y-1 justify-center items-center relative ml-16 top-5">
+            <p className="text-3xl text-center amiga-font">MINT</p>
+            <p className="text-3xl text-center amiga-font border-b-2 border-black">DATE</p>
+            <p className="text-2xl text-center amiga-font pt-5">OCT 17</p>
+            <p className="text-2xl text-center amiga-font">2021</p>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-6 sm:grid-cols-2 gap-3 mt-10 md:ml-20 md:mr-20" id="mint">
