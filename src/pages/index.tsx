@@ -2,18 +2,29 @@ import Head from 'next/head'
 
 import { useState } from "react";
 import { Toaster } from 'react-hot-toast';
-import useCandyMachine from '../hooks/use-candy-machine';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import { MintCard } from '../components/mintcard';
 import { Faq } from '../components/faq';
 import { Members } from '../components/members';
 import { RoadMap } from '../components/roadmap';
+import useCandyMachineBaby from '../hooks/use-candy-machine-baby';
+import useCandyMachineToddler from '../hooks/use-candy-machine-toddler';
+import useCandyMachineTeenager from '../hooks/use-candy-machine-teenager';
+import useCandyMachineAdult from '../hooks/use-candy-machine-adult';
+import useCandyMachineMystery from '../hooks/use-candy-machine-mystery';
 
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
 
-  const candyMachine = useCandyMachine();
+  const candyMachineBaby = useCandyMachineBaby();
+  const candyMachineToddler = useCandyMachineToddler();
+  const candyMachineTeenager = useCandyMachineTeenager();
+  const candyMachineAdult = useCandyMachineAdult();
+  const candyMachineMystery = useCandyMachineMystery();
+
+  // Minting status to all mint buttons
+  const isMinting = candyMachineBaby.isMinting || candyMachineToddler.isMinting || candyMachineTeenager.isMinting || candyMachineAdult.isMinting || candyMachineMystery.isMinting;
 
   return (
     <main className="main-container">
@@ -26,7 +37,7 @@ const Home = () => {
         <link rel="icon" href="/mmtchi.png" />
       </Head>
 
-      <Header isActive={isActive} setIsActive={setIsActive} mintStartDate={candyMachine.mintStartDate} />
+      <Header isActive={isActive} setIsActive={setIsActive} mintStartDate={candyMachineBaby.mintStartDate} />
 
       <div className="flex flex-col justify-center items-center flex-1 mt-20">
 
@@ -119,12 +130,12 @@ const Home = () => {
             description="26 Characters Random Generated with 3 Style of Shell and Background 26 Characters Random Generated with 3 Style of Shell and Background"
             gifImage={`/images/baby.gif`}
             price="1.0 SOL"
-            onMint={candyMachine.onMint}
-            onPackMint={candyMachine.onMintMultiple}
-            isSoldOut={candyMachine.isSoldOut}
-            isMinting={candyMachine.isMinting}
+            onMint={candyMachineBaby.onMint}
+            onPackMint={candyMachineBaby.onMintMultiple}
+            isSoldOut={candyMachineBaby.isSoldOut}
+            isMinting={isMinting}
             isActive={isActive}
-            nftsData={candyMachine.nftsData}
+            nftsData={candyMachineBaby.nftsData}
           />
           <MintCard 
             title="TODDLER" 
@@ -132,12 +143,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/toddler.gif`}
             price="1.0 SOL"
-            onMint={candyMachine.onMint}
-            onPackMint={candyMachine.onMintMultiple}
-            isSoldOut={candyMachine.isSoldOut}
-            isMinting={candyMachine.isMinting}
+            onMint={candyMachineToddler.onMint}
+            onPackMint={candyMachineToddler.onMintMultiple}
+            isSoldOut={candyMachineToddler.isSoldOut}
+            isMinting={isMinting}
             isActive={isActive}
-            nftsData={candyMachine.nftsData}
+            nftsData={candyMachineToddler.nftsData}
           />
           <MintCard 
             title="TEENAGER" 
@@ -145,12 +156,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/teenager.gif`}
             price="1.0 SOL"
-            onMint={candyMachine.onMint}
-            onPackMint={candyMachine.onMintMultiple}
-            isSoldOut={candyMachine.isSoldOut}
-            isMinting={candyMachine.isMinting}
+            onMint={candyMachineTeenager.onMint}
+            onPackMint={candyMachineTeenager.onMintMultiple}
+            isSoldOut={candyMachineTeenager.isSoldOut}
+            isMinting={isMinting}
             isActive={isActive}
-            nftsData={candyMachine.nftsData}
+            nftsData={candyMachineTeenager.nftsData}
           />
           <div className="col-span-1"></div>
           <MintCard 
@@ -159,12 +170,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={`/images/adult.gif`}
             price="1.5 SOL"
-            onMint={candyMachine.onMint}
-            onPackMint={candyMachine.onMintMultiple}
-            isSoldOut={candyMachine.isSoldOut}
-            isMinting={candyMachine.isMinting}
+            onMint={candyMachineAdult.onMint}
+            onPackMint={candyMachineAdult.onMintMultiple}
+            isSoldOut={candyMachineAdult.isSoldOut}
+            isMinting={isMinting}
             isActive={isActive}
-            nftsData={candyMachine.nftsData}
+            nftsData={candyMachineAdult.nftsData}
           />
           <MintCard 
             title="MYSTERY" 
@@ -172,12 +183,12 @@ const Home = () => {
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
             gifImage={null}
             price="2.0 SOL"
-            onMint={candyMachine.onMint}
-            onPackMint={candyMachine.onMintMultiple}
-            isSoldOut={candyMachine.isSoldOut}
-            isMinting={candyMachine.isMinting}
+            onMint={candyMachineMystery.onMint}
+            onPackMint={candyMachineMystery.onMintMultiple}
+            isSoldOut={candyMachineMystery.isSoldOut}
+            isMinting={isMinting}
             isActive={isActive}
-            nftsData={candyMachine.nftsData}
+            nftsData={candyMachineMystery.nftsData}
           />
           <div className="col-span-1"></div>
         </div>

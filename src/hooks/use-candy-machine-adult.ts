@@ -12,20 +12,23 @@ import {
   PRESALE_CONTRACT_ACCOUNT, 
   CONTRACT_PIVATE_KEY, 
   MINTER_STATUS,
+  MINT_PRICE_ADULT,
+  CANDY_MACHINE_CONFIG_ADULT,
+  CANDY_MACHINE_ID_ADULT,
 } from "../utils/constants";
 
-const MINT_PRICE_SOL = Number(process.env.NEXT_MINT_PRICE_SOL)
+const MINT_PRICE_SOL = Number(MINT_PRICE_ADULT)
 
 const treasury = new anchor.web3.PublicKey(
   process.env.NEXT_PUBLIC_TREASURY_ADDRESS!
 );
 
 const config = new anchor.web3.PublicKey(
-  process.env.NEXT_PUBLIC_CANDY_MACHINE_CONFIG!
+  CANDY_MACHINE_CONFIG_ADULT
 );
 
 const candyMachineId = new anchor.web3.PublicKey(
-  process.env.NEXT_PUBLIC_CANDY_MACHINE_ID!
+  CANDY_MACHINE_ID_ADULT
 );
 
 const rpcHost = process.env.NEXT_PUBLIC_SOLANA_RPC_HOST!;
@@ -39,7 +42,7 @@ interface PresaleContract {
   program: anchor.Program,
 }
 
-export default function useCandyMachine() {
+export default function useCandyMachineAdult() {
   const [, setBalance] = useWalletBalance()
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   const [presaleContract, setPresaleContractor] = useState<PresaleContract>();
