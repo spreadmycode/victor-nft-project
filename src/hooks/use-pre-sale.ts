@@ -30,8 +30,8 @@ export interface Presale {
 export default function usePreSaleContract() {
 
     const [presaleContract, setPresaleContractor] = useState<PresaleContract>();
-    const [presaleStatus, setPresaleStatus] = useState<number>(0);
-    const [presaleIndex, setPresaleIndex] = useState<number>(0);
+    const [presaleStatus, setPresaleStatus] = useState<number>(MINTER_STATUS.NotExistInWhiteList);
+    const [presaleIndex, setPresaleIndex] = useState<number>(-1);
     const [presaleStartDate, setPresaleStartDate] = useState<Date>(new Date());
     const [presaleEndDate, setPresaleEndDate] = useState<Date>(new Date());
 
