@@ -46,7 +46,7 @@ body,
   background: url('../../public/images/background_ribbon.png') no-repeat;
   background-size: cover;
   width: 100%;
-  height: 260px;
+  height: 270px;
 }
 
 .start-date-badge {
@@ -74,6 +74,10 @@ body,
   -webkit-transition: max-height .35s;
   -o-transition: max-height .35s;
   transition: max-height .35s;
+}
+
+.overview-background-color {
+  background-color: #131946;
 }
 
 /* :checked - resize to full height */

@@ -50,72 +50,42 @@ const Home = () => {
       <div className="flex flex-col justify-center items-center flex-1 mt-20">
 
         <div className="flex flex-col justify-center items-center flex-1 space-y-3 advertise">
-          <div className="flex flex-col lg:flex-row space-y-2 lg:w-8/12">
+          <div className="flex flex-col lg:flex-row space-y-2 lg:w-7/12 pb-5">
             <img
               className="object-none object-left-bottom top-z-index"
               src={`/images/mmtchi.webp`}
               alt="MMTCHI" />
 
-            <div className="bg-blue-900 rounded-lg border-white overflow-hidden border-8 space-y-3 p-10 lg:-ml-12">
-              <p className="text-5xl text-yellow-400 amiga-font color-936">936</p>
-              <p className="text-2xl text-white amiga-font">UNIQUE</p>
-              <p className="text-2xl text-white amiga-font">TAMADODGY</p>
-              <p className="text-lg text-red-500 amiga-font color-lightpink">LIVE ON SOLANA</p>
-              <p className="text-base text-white leading-4">TamaDodgy is a limited NFT collection on the Solana blockchain. First generation supply is capped at 936. Your TamaDodgy allows you to earn dodgy royalties by staking in dodgy pools of dodgy DAO.</p>
-              <p className="text-base text-white leading-4">All TamaDodgys are programmatically generated to include numerous dodgy traits and rarity. Adopting a TamaDodgy also gives you access to an extra dodgy version of your TamaDodgy and access to features within our TamaDodgy Pet Arcade Game, a virtual pet game with old school classic mini games.</p>
-              <p className="text-base text-white leading-4">All TamaDodgy will be revealed shortly after being minted along with activating dodgy community features based on the roadmap. Please also join our dodgy Discord and connect via Grape to show off you as the verified dodgy owner of TamaDodgy.</p>
-              <p className="text-base text-white leading-4">These dodgy creatures earn you passive income for life. Profits go to the community.</p>
-            </div>
-            
-            <div className="flex pt-5 flex-row lg:flex-col lg:space-y-2">
-              <a href="https://www.facebook.com/wix" target="_blank">
-                <img
-                  className="object-none"
-                  width={200}
-                  height={200}
-                  src={`/images/btn_facebook.webp`}
-                  alt="MMTCHI" />
-              </a>
-              <a href="https://www.twitter.com/wix" target="_blank">
-                <img
-                  className="object-none"
-                  width={200}
-                  height={200}
-                  src={`/images/btn_tweek.webp`}
-                  alt="MMTCHI" />
-              </a>
-              <a href="https://www.youtube.com/user/Wix" target="_blank">
-                <img
-                  className="object-none"
-                  width={200}
-                  height={200}
-                  src={`/images/btn_youtube.webp`}
-                  alt="MMTCHI" />
-              </a>
-              <a href="https://www.pinterest.com/user/Wix" target="_blank">
-                <img
-                  className="object-none"
-                  width={200}
-                  height={200}
-                  src={`/images/btn_pinterest.webp`}
-                  alt="MMTCHI" />
-              </a>
-              <a href="https://www.tweeks.com/user/Wix" target="_blank">
-                <img
-                  className="object-none"
-                  width={200}
-                  height={200}
-                  src={`/images/btn_twitter.webp`}
-                  alt="MMTCHI" />
-              </a>
-              <a href="https://www.instagram.com/user/Wix" target="_blank">
-                <img
-                  className="object-none"
-                  width={200}
-                  height={200}
-                  src={`/images/btn_instagram.webp`}
-                  alt="MMTCHI" />
-              </a>
+            <div className="flex flex-row lg:-ml-8">
+              <div className="overview-background-color rounded-lg border-white overflow-hidden border-8 space-y-3 p-8">
+                <p className="text-3xl text-yellow-400 amiga-font color-936">936</p>
+                <p className="text-xl text-white amiga-font">UNIQUE</p>
+                <p className="text-xl text-white amiga-font">TAMADODGY</p>
+                <p className="text-base amiga-font color-lightpink">LIVE ON SOLANA</p>
+                <p className="text-base text-white leading-5">TamaDodgy is a limited NFT collection on the Solana blockchain. First generation supply is capped at 936. Your TamaDodgy allows you to earn dodgy royalties by staking in dodgy pools of dodgy DAO.</p>
+                <p className="text-base text-white leading-5">All TamaDodgys are programmatically generated to include numerous dodgy traits and rarity. Adopting a TamaDodgy also gives you access to an extra dodgy version of your TamaDodgy and access to features within our TamaDodgy Pet Arcade Game, a virtual pet game with old school classic mini games.</p>
+                <p className="text-base text-white leading-5">All TamaDodgy will be revealed shortly after being minted along with activating dodgy community features based on the roadmap. Please also join our dodgy Discord and connect via Grape to show off you as the verified dodgy owner of TamaDodgy.</p>
+                <p className="text-base text-white leading-5">These dodgy creatures earn you passive income for life. Profits go to the community.</p>
+              </div>
+              
+              <div className="pt-5 flex flex-col space-y-2">
+                <a href="https://www.facebook.com/wix" target="_blank">
+                  <img
+                    className="object-contain"
+                    width={250}
+                    height={250}
+                    src={`/images/btn_facebook.webp`}
+                    alt="MMTCHI" />
+                </a>
+                <a href="https://www.twitter.com/wix" target="_blank">
+                  <img
+                    className="object-contain"
+                    width={250}
+                    height={250}
+                    src={`/images/btn_tweek.webp`}
+                    alt="MMTCHI" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -145,9 +115,8 @@ const Home = () => {
         <div className="grid md:grid-cols-6 sm:grid-cols-2 gap-3 mt-10 md:ml-20 md:mr-20" id="mint">
           <MintCard 
             title="Baby" 
-            image={`/images/babyx.webp`} 
+            image={`/images/BabyDemo.gif`} 
             description="26 Characters Random Generated with 3 Style of Shell and Background 26 Characters Random Generated with 3 Style of Shell and Background"
-            gifImage={`/images/baby.gif`}
             price="1.0 SOL"
             onMint={candyMachineBaby.onMint}
             onPackMint={candyMachineBaby.onMintMultiple}
@@ -158,9 +127,8 @@ const Home = () => {
           />
           <MintCard 
             title="TODDLER" 
-            image={`/images/toddlerx.webp`} 
+            image={`/images/ToddlerDemo.gif`} 
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
-            gifImage={`/images/toddler.gif`}
             price="1.0 SOL"
             onMint={candyMachineToddler.onMint}
             onPackMint={candyMachineToddler.onMintMultiple}
@@ -171,9 +139,8 @@ const Home = () => {
           />
           <MintCard 
             title="TEENAGER" 
-            image={`/images/teenagerx.webp`} 
+            image={`/images/TeenDemo.gif`} 
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
-            gifImage={`/images/teenager.gif`}
             price="1.0 SOL"
             onMint={candyMachineTeenager.onMint}
             onPackMint={candyMachineTeenager.onMintMultiple}
@@ -185,9 +152,8 @@ const Home = () => {
           <div className="col-span-1"></div>
           <MintCard 
             title="ADULT" 
-            image={`/images/adultx.webp`} 
+            image={`/images/AdultDemo.gif`} 
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
-            gifImage={`/images/adult.gif`}
             price="1.5 SOL"
             onMint={candyMachineAdult.onMint}
             onPackMint={candyMachineAdult.onMintMultiple}
@@ -197,10 +163,9 @@ const Home = () => {
             nftsData={candyMachineAdult.nftsData}
           />
           <MintCard 
-            title="MYSTERY" 
-            image={`/images/mystery.webp`} 
+            title="ELDER" 
+            image={`/images/ElderDemo.gif`} 
             description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
-            gifImage={null}
             price="2.0 SOL"
             onMint={candyMachineMystery.onMint}
             onPackMint={candyMachineMystery.onMintMultiple}

@@ -4,7 +4,6 @@ export const MintCard = ({
   title,
   image,
   description,
-  gifImage,
   price,
   onMint,
   onPackMint,
@@ -37,27 +36,13 @@ export const MintCard = ({
   }
 
   return <div className="m-2 col-span-2 p-5 flex flex-col justify-center items-center flex-1 space-y-3 bg-white rounded-lg mint-card">
-      <p className="lg:text-3xl text-1xl text-blue-400 text-center amiga-font color-lightcyan">{title}</p>
+      <p className="lg:text-3xl text-xl text-blue-400 text-center amiga-font color-lightcyan">{title}</p>
       <img
           src={image}
           alt="Card" />
-      <p className="text-sm leading-4 break-normal h-36 overflow-y-auto ml-5 mr-5 text-center">
+      <p className="text-sm leading-4 break-normal h-28 overflow-y-auto ml-5 mr-5 text-center">
         {description}
       </p>
-      {gifImage ?
-        <img
-          className="object-contain transform scale-150"
-          width="150"
-          height="150"
-          src={gifImage}
-          alt="Card" /> :
-        <img
-          className="object-contain transform scale-150 invisible"
-          width="150"
-          height="150"
-          src={`/images/adult.gif`}
-          alt="Card" /> 
-      }
       {isActive && 
         <p className="text-blue-500 text-center">
           {nftsData.itemsRedeemed} / {nftsData.itemsAvailable}

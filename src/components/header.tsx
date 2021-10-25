@@ -11,7 +11,7 @@ const Header = ({ isActive, setIsActive, mintStartDate, presaleStartDate, presal
 
   const renderAliveCounter = ({ days, hours, minutes, seconds }: any) => {
     return (
-      <span className="text-gray-800 font-bold lg:text-2xl sm:text-1xl cursor-default">
+      <span className="text-gray-800 font-bold lg:text-2xl sm:text-xl cursor-default">
         Live in {days} days, {hours} hours, {minutes} minutes, {seconds} seconds
       </span>
     );
@@ -19,7 +19,7 @@ const Header = ({ isActive, setIsActive, mintStartDate, presaleStartDate, presal
 
   const renderPresaleCounter = ({ days, hours, minutes, seconds }: any) => {
     return (
-      <span className="text-gray-800 font-bold lg:text-2xl sm:text-1xl cursor-default">
+      <span className="text-gray-800 font-bold lg:text-2xl sm:text-xl cursor-default">
         Pre-Sale in {days} days, {hours} hours, {minutes} minutes, {seconds} seconds
       </span>
     );
@@ -40,7 +40,7 @@ const Header = ({ isActive, setIsActive, mintStartDate, presaleStartDate, presal
           src={`/images/tamdodgy logo.webp`}
           alt="Logo" />
       </div>
-      <div className="text-black justify-center space-x-6 text-1xl md:text-2xl lg:pr-10 font-bold flex items-center">
+      <div className="text-black justify-center space-x-6 text-xl lg:pl-10 lg:pr-10 font-bold flex items-center">
         <Link href="/">
           <a>HOME</a>
         </Link>
