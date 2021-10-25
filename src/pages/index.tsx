@@ -56,16 +56,18 @@ const Home = () => {
               src={`/images/mmtchi.webp`}
               alt="MMTCHI" />
 
-            <div className="flex flex-row lg:-ml-8">
-              <div className="overview-background-color rounded-lg border-white overflow-hidden border-8 space-y-3 p-8">
-                <p className="text-3xl text-yellow-400 amiga-font color-936">936</p>
-                <p className="text-xl text-white amiga-font">UNIQUE</p>
-                <p className="text-xl text-white amiga-font">TAMADODGY</p>
-                <p className="text-base amiga-font color-lightpink">LIVE ON SOLANA</p>
-                <p className="text-base text-white leading-5">TamaDodgy is a limited NFT collection on the Solana blockchain. First generation supply is capped at 936. Your TamaDodgy allows you to earn dodgy royalties by staking in dodgy pools of dodgy DAO.</p>
-                <p className="text-base text-white leading-5">All TamaDodgys are programmatically generated to include numerous dodgy traits and rarity. Adopting a TamaDodgy also gives you access to an extra dodgy version of your TamaDodgy and access to features within our TamaDodgy Pet Arcade Game, a virtual pet game with old school classic mini games.</p>
-                <p className="text-base text-white leading-5">All TamaDodgy will be revealed shortly after being minted along with activating dodgy community features based on the roadmap. Please also join our dodgy Discord and connect via Grape to show off you as the verified dodgy owner of TamaDodgy.</p>
-                <p className="text-base text-white leading-5">These dodgy creatures earn you passive income for life. Profits go to the community.</p>
+            <div className="flex flex-row lg:-ml-6">
+              <div className="rounded-3xl bg-white overflow-hidden p-3 shadow-lg">
+                <div className="overview-background-color rounded-2xl space-y-3 p-6">
+                  <p className="text-3xl text-yellow-400 amiga-font color-936">936</p>
+                  <p className="text-xl text-white amiga-font">UNIQUE</p>
+                  <p className="text-xl text-white amiga-font">TAMADODGY</p>
+                  <p className="text-base amiga-font color-lightpink">LIVE ON SOLANA</p>
+                  <p className="text-base text-white leading-4">TamaDodgy is a limited NFT collection on the Solana blockchain. First generation supply is capped at 936. Your TamaDodgy allows you to earn dodgy royalties by staking in dodgy pools of dodgy DAO.</p>
+                  <p className="text-base text-white leading-4">All TamaDodgys are programmatically generated to include numerous dodgy traits and rarity. Adopting a TamaDodgy also gives you access to an extra dodgy version of your TamaDodgy and access to features within our TamaDodgy Pet Arcade Game, a virtual pet game with old school classic mini games.</p>
+                  <p className="text-base text-white leading-4">All TamaDodgy will be revealed shortly after being minted along with activating dodgy community features based on the roadmap. Please also join our dodgy Discord and connect via Grape to show off you as the verified dodgy owner of TamaDodgy.</p>
+                  <p className="text-base text-white leading-4">These dodgy creatures earn you passive income for life. Profits go to the community.</p>
+                </div>
               </div>
               
               <div className="pt-5 flex flex-col space-y-2">
