@@ -40,7 +40,7 @@ export const MintCard = ({
       <img
           src={image}
           alt="Card" />
-      <p className="text-sm leading-4 break-normal h-28 overflow-y-auto ml-5 mr-5 text-center">
+      <p className="text-sm leading-4 break-normal h-20 overflow-y-auto ml-5 mr-5 text-center">
         {description}
       </p>
       {isActive && 
