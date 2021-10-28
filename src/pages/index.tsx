@@ -8,25 +8,14 @@ import { MintCard } from '../components/mintcard';
 import { Faq } from '../components/faq';
 import { Members } from '../components/members';
 import { RoadMap } from '../components/roadmap';
-import useCandyMachineBaby from '../hooks/use-candy-machine-baby';
-import useCandyMachineToddler from '../hooks/use-candy-machine-toddler';
-import useCandyMachineTeenager from '../hooks/use-candy-machine-teenager';
-import useCandyMachineAdult from '../hooks/use-candy-machine-adult';
-import useCandyMachineMystery from '../hooks/use-candy-machine-mystery';
+import useCandyMachine from '../hooks/use-candy-machine';
 import usePreSaleContract, { Presale } from '../hooks/use-pre-sale';
 
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
 
   const presaleContract: Presale = usePreSaleContract();
-  const candyMachineBaby = useCandyMachineBaby(presaleContract);
-  const candyMachineToddler = useCandyMachineToddler(presaleContract);
-  const candyMachineTeenager = useCandyMachineTeenager(presaleContract);
-  const candyMachineAdult = useCandyMachineAdult(presaleContract);
-  const candyMachineMystery = useCandyMachineMystery(presaleContract);
-
-  // Minting status to all mint buttons
-  const isMinting = candyMachineBaby.isMinting || candyMachineToddler.isMinting || candyMachineTeenager.isMinting || candyMachineAdult.isMinting || candyMachineMystery.isMinting;
+  const candyMachine = useCandyMachine(presaleContract);
 
   return (
     <main className="main-container">
@@ -42,7 +31,7 @@ const Home = () => {
       <Header 
         isActive={isActive} 
         setIsActive={setIsActive} 
-        mintStartDate={candyMachineBaby.mintStartDate} 
+        mintStartDate={candyMachine.mintStartDate} 
         presaleStartDate={presaleContract.presaleStartDate}
         presaleEndDate={presaleContract.presaleEndDate}
       />
@@ -115,68 +104,20 @@ const Home = () => {
         </div>
 
         <div className="grid md:grid-cols-6 sm:grid-cols-2 gap-3 mt-10 md:ml-20 md:mr-20" id="mint">
+          <div className="col-span-2"></div>
           <MintCard 
             title="Baby" 
             image={`/images/BabyDemo.gif`} 
             description="26 Characters Random Generated with 3 Style of Shell and Background 26 Characters Random Generated with 3 Style of Shell and Background"
             price="1.0 SOL"
-            onMint={candyMachineBaby.onMint}
-            onPackMint={candyMachineBaby.onMintMultiple}
-            isSoldOut={candyMachineBaby.isSoldOut}
-            isMinting={isMinting}
+            onMint={candyMachine.onMint}
+            onPackMint={candyMachine.onMintMultiple}
+            isSoldOut={candyMachine.isSoldOut}
+            isMinting={candyMachine.isMinting}
             isActive={isActive}
-            nftsData={candyMachineBaby.nftsData}
+            nftsData={candyMachine.nftsData}
           />
-          <MintCard 
-            title="TODDLER" 
-            image={`/images/ToddlerDemo.gif`} 
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
-            price="1.0 SOL"
-            onMint={candyMachineToddler.onMint}
-            onPackMint={candyMachineToddler.onMintMultiple}
-            isSoldOut={candyMachineToddler.isSoldOut}
-            isMinting={isMinting}
-            isActive={isActive}
-            nftsData={candyMachineToddler.nftsData}
-          />
-          <MintCard 
-            title="TEENAGER" 
-            image={`/images/TeenDemo.gif`} 
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
-            price="1.0 SOL"
-            onMint={candyMachineTeenager.onMint}
-            onPackMint={candyMachineTeenager.onMintMultiple}
-            isSoldOut={candyMachineTeenager.isSoldOut}
-            isMinting={isMinting}
-            isActive={isActive}
-            nftsData={candyMachineTeenager.nftsData}
-          />
-          <div className="col-span-1"></div>
-          <MintCard 
-            title="ADULT" 
-            image={`/images/AdultDemo.gif`} 
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
-            price="1.5 SOL"
-            onMint={candyMachineAdult.onMint}
-            onPackMint={candyMachineAdult.onMintMultiple}
-            isSoldOut={candyMachineAdult.isSoldOut}
-            isMinting={isMinting}
-            isActive={isActive}
-            nftsData={candyMachineAdult.nftsData}
-          />
-          <MintCard 
-            title="ELDER" 
-            image={`/images/ElderDemo.gif`} 
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the"
-            price="2.0 SOL"
-            onMint={candyMachineMystery.onMint}
-            onPackMint={candyMachineMystery.onMintMultiple}
-            isSoldOut={candyMachineMystery.isSoldOut}
-            isMinting={isMinting}
-            isActive={isActive}
-            nftsData={candyMachineMystery.nftsData}
-          />
-          <div className="col-span-1"></div>
+          <div className="col-span-2"></div>
         </div>
 
         <RoadMap />

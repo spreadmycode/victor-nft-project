@@ -6,25 +6,20 @@ import toast from 'react-hot-toast';
 import useWalletBalance from "./use-wallet-balance";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { sleep } from "../utils/utility";
-import { 
-  MINT_PRICE_ADULT,
-  CANDY_MACHINE_CONFIG_ADULT,
-  CANDY_MACHINE_ID_ADULT,
-} from "../utils/constants";
 import { Presale } from "./use-pre-sale";
 
-const MINT_PRICE_SOL = Number(MINT_PRICE_ADULT)
+const MINT_PRICE_SOL = Number(process.env.NEXT_MINT_PRICE_SOL);
 
 const treasury = new anchor.web3.PublicKey(
   process.env.NEXT_PUBLIC_TREASURY_ADDRESS!
 );
 
 const config = new anchor.web3.PublicKey(
-  CANDY_MACHINE_CONFIG_ADULT
+  process.env.NEXT_PUBLIC_CANDY_MACHINE_CONFIG!
 );
 
 const candyMachineId = new anchor.web3.PublicKey(
-  CANDY_MACHINE_ID_ADULT
+  process.env.NEXT_PUBLIC_CANDY_MACHINE_ID!
 );
 
 const rpcHost = process.env.NEXT_PUBLIC_SOLANA_RPC_HOST!;
@@ -32,7 +27,7 @@ const connection = new anchor.web3.Connection(rpcHost);
 
 const txTimeout = 30000;
 
-export default function useCandyMachineAdult(presaleContract: Presale) {
+export default function useCandyMachine(presaleContract: Presale) {
 
   const [, setBalance] = useWalletBalance()
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
