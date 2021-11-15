@@ -6,9 +6,9 @@ import toast from 'react-hot-toast';
 import useWalletBalance from "./use-wallet-balance";
 import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import { sleep } from "../utils/utility";
-import { Presale } from "./use-pre-sale";
+import usePresale from "./use-pre-sale";
 
-const MINT_PRICE_SOL = Number(process.env.NEXT_MINT_PRICE_SOL);
+const MINT_PRICE_SOL = Number(process.env.NEXT_PUBLIC_MINT_PRICE_SOL);
 
 const treasury = new anchor.web3.PublicKey(
   process.env.NEXT_PUBLIC_TREASURY_ADDRESS!
@@ -27,9 +27,10 @@ const connection = new anchor.web3.Connection(rpcHost);
 
 const txTimeout = 30000;
 
-export default function useCandyMachine(presaleContract: Presale) {
+export default function useCandyMachine() {
 
-  const [, setBalance] = useWalletBalance()
+  const [, setBalance] = useWalletBalance();
+  const { isMintPossible } = usePresale();
   const [candyMachine, setCandyMachine] = useState<CandyMachine>();
   const wallet = useWallet();
   const [nftsData, setNftsData] = useState<any>({} = {
@@ -96,10 +97,9 @@ export default function useCandyMachine(presaleContract: Presale) {
     try {
       setIsMinting(true);
 
-      let possible = await presaleContract.checkMintPossible();
-      // Check current wallet can mint
-      if (!possible) {
+      if (!isMintPossible) {
         setIsMinting(false);
+        toast.error("Mint failed! You are not in whitelist.");
         return;
       }
 
@@ -132,10 +132,7 @@ export default function useCandyMachine(presaleContract: Presale) {
         );
 
         if (!status?.err) {
-          toast.success("Congratulations! Mint succeeded! Check the 'My Arts' page :)");
-
-          await presaleContract.updatePresaleContractAccount();
-          
+          toast.success("Congratulations! Mint succeeded!");
         } else {
           toast.error("Mint failed! Please try again!");
         }
@@ -170,6 +167,13 @@ export default function useCandyMachine(presaleContract: Presale) {
   const onMintMultiple = async (quantity: number) => {
     try {
       setIsMinting(true);
+
+      if (!isMintPossible) {
+        setIsMinting(false);
+        toast.error("Mint failed! You are not in whitelist.");
+        return;
+      }
+
       const anchorWallet = {
         publicKey: wallet.publicKey,
         signAllTransactions: wallet.signAllTransactions,

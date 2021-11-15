@@ -9,13 +9,11 @@ import { Faq } from '../components/faq';
 import { Members } from '../components/members';
 import { RoadMap } from '../components/roadmap';
 import useCandyMachine from '../hooks/use-candy-machine';
-import usePreSaleContract, { Presale } from '../hooks/use-pre-sale';
 
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
 
-  const presaleContract: Presale = usePreSaleContract();
-  const candyMachine = useCandyMachine(presaleContract);
+  const candyMachine = useCandyMachine();
 
   return (
     <main className="main-container">
@@ -32,8 +30,6 @@ const Home = () => {
         isActive={isActive} 
         setIsActive={setIsActive} 
         mintStartDate={candyMachine.mintStartDate} 
-        presaleStartDate={presaleContract.presaleStartDate}
-        presaleEndDate={presaleContract.presaleEndDate}
       />
 
       <div className="flex flex-col justify-center items-center flex-1 mt-20">
@@ -106,7 +102,7 @@ const Home = () => {
         <div className="grid md:grid-cols-6 sm:grid-cols-2 gap-3 mt-10 md:ml-20 md:mr-20" id="mint">
           <div className="col-span-2"></div>
           <MintCard 
-            title="Baby" 
+            title="Tamadodgy" 
             image={`/images/BabyDemo.gif`} 
             description="26 Characters Random Generated with 3 Style of Shell and Background 26 Characters Random Generated with 3 Style of Shell and Background"
             price="1.0 SOL"

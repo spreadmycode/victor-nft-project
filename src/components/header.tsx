@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Countdown from 'react-countdown';
 import { shortenAddress } from '../utils/candy-machine';
 
-const Header = ({ isActive, setIsActive, mintStartDate, presaleStartDate, presaleEndDate }: any) => {
+const Header = ({ isActive, setIsActive, mintStartDate }: any) => {
 
   const wallet = useWallet();
 
@@ -16,22 +16,6 @@ const Header = ({ isActive, setIsActive, mintStartDate, presaleStartDate, presal
       </span>
     );
   };
-
-  const renderPresaleCounter = ({ days, hours, minutes, seconds }: any) => {
-    return (
-      <span className="text-gray-800 font-bold lg:text-2xl sm:text-xl cursor-default">
-        Pre-Sale in {days} days, {hours} hours, {minutes} minutes, {seconds} seconds
-      </span>
-    );
-  };
-
-  let presaleRender = false;
-  let now = new Date();
-  if (presaleStartDate && presaleEndDate) {
-    if (now.getTime() >= presaleStartDate.getTime() && now.getTime() <= presaleEndDate.getTime()) {
-      presaleRender = true;
-    }
-  }
 
   return <div className="flex flex-col space-y-5 items-center justify-center">
     <div className="flex flex-col xl:flex-row justify-between space-x-0 xl:space-x-5 space-y-5 p-5">
@@ -67,12 +51,6 @@ const Header = ({ isActive, setIsActive, mintStartDate, presaleStartDate, presal
       onMount={({ completed }) => completed && setIsActive(true)}
       onComplete={() => setIsActive(true)}
       renderer={renderAliveCounter}
-    />}
-
-    {presaleRender && <Countdown
-      date={presaleEndDate}
-      onMount={({ completed }) => completed && setIsActive(true)}
-      renderer={renderPresaleCounter}
     />}
   </div>;
 }
