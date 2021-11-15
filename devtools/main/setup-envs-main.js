@@ -3,7 +3,7 @@ const path = require('path')
 const envfile = require('envfile')
 const templateEnvFile = envfile.parse(fs.readFileSync('./.env.template').toString())
 
-let NEXT_MINT_PRICE_SOL, NEXT_PUBLIC_CANDY_MACHINE_ID, NEXT_PUBLIC_CANDY_START_DATE, NEXT_PUBLIC_TREASURY_ADDRESS, NEXT_PUBLIC_CANDY_MACHINE_CONFIG
+let NEXT_PUBLIC_MINT_PRICE_SOL, NEXT_PUBLIC_CANDY_MACHINE_ID, NEXT_PUBLIC_CANDY_START_DATE, NEXT_PUBLIC_TREASURY_ADDRESS, NEXT_PUBLIC_CANDY_MACHINE_CONFIG
 
 fs.readdir('./logs/main/', (err, files) => {
   if (err) {
@@ -36,7 +36,7 @@ fs.readdir('./logs/main/', (err, files) => {
 
     if (fileDir.includes('mint-price.txt')) {
       const fileContent = fs.readFileSync(fileDir);
-      NEXT_MINT_PRICE_SOL = fileContent;
+      NEXT_PUBLIC_MINT_PRICE_SOL = fileContent;
     }
   });
 
@@ -46,7 +46,7 @@ fs.readdir('./logs/main/', (err, files) => {
 
   const generatedConfig = {
     ...templateEnvFile,
-    NEXT_MINT_PRICE_SOL,
+    NEXT_PUBLIC_MINT_PRICE_SOL,
     NEXT_PUBLIC_CANDY_MACHINE_ID,
     NEXT_PUBLIC_CANDY_START_DATE,
     NEXT_PUBLIC_TREASURY_ADDRESS,
