@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Toaster } from 'react-hot-toast';
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -9,11 +9,19 @@ import { Faq } from '../components/faq';
 import { Members } from '../components/members';
 import { RoadMap } from '../components/roadmap';
 import useCandyMachine from '../hooks/use-candy-machine';
-import useWindowDimensions from '../utils/utility';
 
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
-  const { width } = useWindowDimensions();
+  const [width, setWindowWidth] = useState(1024);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const candyMachine = useCandyMachine();
 
