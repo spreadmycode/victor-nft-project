@@ -6,7 +6,7 @@ export const RoadMap = () => {
 
     <RoadMapItem
       title="P1"
-      list={['September 1 - Project launched', 'October - Partner with other dodgy projects in Solana', 'Mint Date - October 17th, 2021']}
+      list={['September 1 - Project launched', 'October - Partner with other dodgy projects in Solana', 'Mint Date - November 21st, 2021']}
     />
     <RoadMapItem
       title="P2"

@@ -9,9 +9,11 @@ import { Faq } from '../components/faq';
 import { Members } from '../components/members';
 import { RoadMap } from '../components/roadmap';
 import useCandyMachine from '../hooks/use-candy-machine';
+import useWindowDimensions from '../utils/utility';
 
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
+  const { width } = useWindowDimensions();
 
   const candyMachine = useCandyMachine();
 
@@ -32,47 +34,48 @@ const Home = () => {
         mintStartDate={candyMachine.mintStartDate} 
       />
 
-      <div className="flex flex-col justify-center items-center flex-1 mt-20">
+      <div className="flex flex-col justify-center items-center mt-20">
 
-        <div className="flex flex-col justify-center items-center flex-1 space-y-3 advertise">
-          <div className="flex flex-col lg:flex-row space-y-2 lg:w-7/12 pb-5">
+        <div className="w-full flex justify-center items-center advertise">
+          <div className="flex flex-col md:flex-row">
             <img
-              className="object-none object-left-bottom top-z-index"
-              src={`/images/mmtchi.webp`}
+              className={width > 768 ? "object-none object-left-bottom top-z-index mb-5" : "object-contain top-z-index mb-5 mx-auto"}
+              src={`/images/mmtchi.png`}
+              width={width > 758 ? "460px" : "300px"}
+              height={width > 768 ? "540px" : "380"}
               alt="MMTCHI" />
 
-            <div className="flex flex-row lg:-ml-6">
-              <div className="rounded-3xl bg-white overflow-hidden p-3 shadow-lg">
-                <div className="overview-background-color rounded-2xl space-y-3 p-6">
-                  <p className="text-3xl text-yellow-400 amiga-font color-936">936</p>
-                  <p className="text-xl text-white amiga-font">UNIQUE</p>
-                  <p className="text-xl text-white amiga-font">TAMADODGY</p>
-                  <p className="text-base amiga-font color-lightpink">LIVE ON SOLANA</p>
-                  <p className="text-base text-white leading-4">TamaDodgy is a limited NFT collection on the Solana blockchain. First generation supply is capped at 936. Your TamaDodgy allows you to earn dodgy royalties by staking in dodgy pools of dodgy DAO.</p>
-                  <p className="text-base text-white leading-4">All TamaDodgys are programmatically generated to include numerous dodgy traits and rarity. Adopting a TamaDodgy also gives you access to an extra dodgy version of your TamaDodgy and access to features within our TamaDodgy Pet Arcade Game, a virtual pet game with old school classic mini games.</p>
-                  <p className="text-base text-white leading-4">All TamaDodgy will be revealed shortly after being minted along with activating dodgy community features based on the roadmap. Please also join our dodgy Discord and connect via Grape to show off you as the verified dodgy owner of TamaDodgy.</p>
-                  <p className="text-base text-white leading-4">These dodgy creatures earn you passive income for life. Profits go to the community.</p>
-                </div>
+            <div className="ml-3 rounded-3xl bg-white overflow-hidden p-3 mb-5 overview-shadow" style={width > 768 ? {width: "430px", height: "619px"} : {width: "90%", height: "fit-content"}}>
+              <div className="overview-background-color rounded-2xl space-y-3 pt-12 px-6 pb-6 w-full h-full">
+                <p className="text-6xl text-yellow-400 amiga-font color-936 text-center">2200</p>
+                <p className="text-xl text-white amiga-font text-center">UNIQUE TAMADODGY</p>
+                <p className="text-xl amiga-font color-lightpink text-center">LIVE ON SOLANA</p>
+                <p className="text-base text-white leading-4"><b>TamaDodgy</b> is a Walk-To-Breed & Breed-To-Earn NFT Game on the Solana blockchain.</p>
+                <p className="text-base text-white leading-4">First generation supply is capped at 2200. Your <b>TamaDodgy</b> allows you to interbreed with other HODLers to get extra DODGY generations of these dodgy creatures.</p>
+                <p className="text-base text-white leading-4">In addition, adopting a <b>TamaDodgy</b> gives you access to our <b>TamaDodgy</b> Pet Game, a virtual pet game like Tamagochi but with added old school classic mini games and Walk-To-Breed features so you can lose some weight with your <b>TamaDodgy</b>.</p>
+                <p className="text-base text-white leading-4">All <b>TamaDodgy</b> are programmatically generated to include numerous dodgy traits and rarities. All TamaDodgy will be revealed shortly after being minted. </p>
+                <p className="text-base text-white leading-4">Dodgy community features will also be activated based on the roadmap. Please also join our dodgy Discord and connect via Grape to show off as the verified owner of <b>TamaDodgy</b>.</p>
               </div>
-              
-              <div className="pt-5 flex flex-col space-y-2">
-                <a href="https://www.facebook.com/wix" target="_blank">
-                  <img
-                    className="object-contain"
-                    width={250}
-                    height={250}
-                    src={`/images/btn_facebook.webp`}
-                    alt="MMTCHI" />
-                </a>
-                <a href="https://www.twitter.com/wix" target="_blank">
-                  <img
-                    className="object-contain"
-                    width={250}
-                    height={250}
-                    src={`/images/btn_tweek.webp`}
-                    alt="MMTCHI" />
-                </a>
-              </div>
+            </div>
+            
+            <div className="pt-5 flex flex-row md:flex-col md:space-y-2 mx-auto md:m-0">
+              <a href="https://www.discord.gg/wix" target="_blank">
+                <img
+                  className="object-contain"
+                  width="39px"
+                  height="39px"
+                  src={`/images/discord.png`}
+                  alt="MMTCHI" />
+              </a>
+              <a href="https://www.twitter.com/wix" target="_blank">
+                <img
+                  className="object-contain"
+                  width="39px"
+                  height="39px"
+                  src={`/images/twitter.png`}
+                  style={(width > 768) ? {marginLeft: 0} : {marginLeft: '5px'}}
+                  alt="MMTCHI" />
+              </a>
             </div>
           </div>
         </div>
@@ -92,28 +95,69 @@ const Home = () => {
             </div>
           </div>
           <div className="start-date-badge flex flex-col space-y-1 justify-center items-center relative ml-16 top-5">
-            <p className="text-3xl text-center amiga-font">MINT</p>
-            <p className="text-3xl text-center amiga-font border-b-2 border-black">DATE</p>
-            <p className="text-2xl text-center amiga-font pt-5">OCT 17</p>
-            <p className="text-2xl text-center amiga-font">2021</p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-6 sm:grid-cols-2 gap-3 mt-10 md:ml-20 md:mr-20" id="mint">
-          <div className="col-span-2"></div>
           <MintCard 
-            title="Tamadodgy" 
+            title="Baby" 
             image={`/images/BabyDemo.gif`} 
-            description="26 Characters Random Generated with 3 Style of Shell and Background 26 Characters Random Generated with 3 Style of Shell and Background"
-            price="1.0 SOL"
-            onMint={candyMachine.onMint}
-            onPackMint={candyMachine.onMintMultiple}
-            isSoldOut={candyMachine.isSoldOut}
-            isMinting={candyMachine.isMinting}
-            isActive={isActive}
-            nftsData={candyMachine.nftsData}
+            subtitle="Baby Tamadodgys"
+            description="are tiny creatures that moves very slow; their breeding specs are unknown; all backgrounds’ rarity is each at 22.5% with Amelia and Mermaid at 5%; all eggs’ rarity is each at 23.75% with Coral at 5%."
+            flow={`/images/420babyloop.gif`}
+            frame={`/images/babyeggswatch.png`}
+            background={`/images/babyswatch.png`}
           />
-          <div className="col-span-2"></div>
+          <MintCard 
+            title="TODDLER" 
+            image={`/images/ToddlerDemo.gif`} 
+            subtitle="Toddler Tamadodgys"
+            description="are small creatures that moves fairly slow; their breeding probabilities are low but, if successful, will have high rates of rare traits; all backgrounds’ rarity is each at 22.5% with Emerald and Hinode at 5%; all eggs’ rarity is each at 23.75% with Wheat at 5%."
+            flow={`/images/420todloop.gif`}
+            frame={`/images/toodlereggswatch.png`}
+            background={`/images/todswatch.png`}
+          />
+          <MintCard 
+            title="TEEN" 
+            image={`/images/TeenDemo.gif`} 
+            subtitle="Teenager Tamadodgys"
+            description="have the highest breeding rates; they are medium size creatures that moves the quickest; all backgrounds’ rarity is each at 22.5% with Pooh and Taiko at 5%; all eggs’ rarity is each at 23.75% with Candy at 5%."
+            flow={`/images/420teenloop.gif`}
+            frame={`/images/teeneggswatch.png`}
+            background={`/images/teenswatch.png`}
+          />
+          <div className="col-span-1"></div>
+          <MintCard 
+            title="ADULT" 
+            image={`/images/AdultDemo.gif`} 
+            subtitle="Adult Tamadodgys"
+            description="if inter-breeded will give rise to extremely dodgy dodgers; they are largest size creatures that moves the slowest; all backgrounds’ rarity is each at 22.5% with Ralph and Frozen at 5%; all eggs’ rarity is each at 23.75% with Calcium at 5%."
+            flow={`/images/420adultloop.gif`}
+            frame={`/images/adulteggswatch.png`}
+            background={`/images/adultswatch.png`}
+          />
+          <MintCard 
+            title="ELDER" 
+            image={`/images/ElderDemo.gif`} 
+            subtitle="Elder Tamadodgys"
+            description="are medium size creatures that move fairly fast; their breeding probabilities are average; rumour has it that interbreeding between Elder Tamadodgys are not possible? all backgrounds’ rarity is each at 22.5% with Watchmen and Evangelion at 5%; all eggs’ rarity is each at 23.75% with Amethyst at 5%."
+            flow={`/images/420elderloop.gif`}
+            frame={`/images/eldereggswatch.png`}
+            background={`/images/elderswatch.png`}
+          />
+          <div className="col-span-1"></div>
+        </div>
+
+        <div className="w-full flex justify-center items-center mt-5 mb-5">
+          <div className="button-mint flex justify-center items-center relative">
+            <div className="flex flex-col space-y-2">
+              <p className="text-center color-lightpink amiga-font text-2xl">MINT</p>
+              <p className="text-center color-936 amiga-font text-xl">1SOL</p>
+            </div>
+
+            <img src={`/images/left_glue.png`} className="absolute -left-8 -top-8" />
+            <img src={`/images/right_glue.png`} className="absolute -right-8 -top-8" />
+          </div>
         </div>
 
         <RoadMap />

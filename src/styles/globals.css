@@ -23,7 +23,7 @@ body,
 }
 
 .main-container {
-  background: url('../../public/images/background.webp') no-repeat center center fixed;
+  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('../../public/images/background.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -52,12 +52,20 @@ body,
 .start-date-badge {
   background: url('../../public/images/background_start.png') no-repeat;
   background-size: cover;
-  width: 282px;
-  height: 255px;
+  width: 230px;
+  height: 239px;
+}
+
+.overview-shadow {
+  box-shadow: var(--shd,0 5px 4px rgba(0,0,0,.6));
 }
 
 .mint-card {
-  box-shadow: 10px 5px 5px grey;
+  border: solid 2px #ff5cb6;
+}
+
+.members-background {
+  background-color: rgba(255,255,255,.6);
 }
 
 .roadmap {
@@ -78,6 +86,14 @@ body,
 
 .overview-background-color {
   background-color: #131946;
+}
+
+.button-mint {
+  border: 10px solid #ff5cb6;
+  background-color: rgba(19, 25, 70, 1);
+  width: 280px;
+  height: 160px;
+  box-shadow: var(--shd,0 3px 3px rgba(0,0,0,.6));
 }
 
 /* :checked - resize to full height */

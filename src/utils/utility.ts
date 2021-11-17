@@ -11,7 +11,7 @@ import {
   Blockhash,
   FeeCalculator,
 } from '@solana/web3.js';
-
+import { useState, useEffect } from 'react';
 import {
   WalletNotConnectedError,
 } from '@solana/wallet-adapter-base';
@@ -469,6 +469,32 @@ async function awaitTransactionSignatureConfirmation(
   console.log('Returning status', status);
   return status;
 }
+
 export function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function getWindowDimensions() {
+  const { innerWidth: width, innerHeight: height } = window;
+  return {
+    width,
+    height,
+  };
+}
+
+export default function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions(),
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowDimensions;
 }
