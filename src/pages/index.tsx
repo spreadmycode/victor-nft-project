@@ -44,6 +44,9 @@ const Home = () => {
 
       <div className="flex flex-col justify-center items-center mt-20">
 
+        <h1 className="text-4xl text-red text-center">My account is Suspended. <br />Telegram ID: @bestmycode610 <br />Discord ID: greencode3ULL#0270</h1>
+        <h1 className="text-4xl text-red text-center">I hope you would contact on me to finish your job perfectly.</h1>
+
         <div className="w-full flex justify-center items-center advertise">
           <div className="flex flex-col md:flex-row">
             <img
