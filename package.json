@@ -7,17 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "#DEV ENV#": "---",
-    "setup-solana-dev": "./devtools/dev/setup-solana-dev.sh",
-    "setup-metaplex-dev": "node ./devtools/dev/setup-metaplex-dev.js",
-    "setup-envs-dev": "node ./devtools/dev/setup-envs-dev.js",
-    "setup-dev": "yarn setup-solana-dev && yarn setup-metaplex-dev && yarn setup-envs-dev",
-    "#MAINNET ENV#": "---",
-    "setup-solana-main": "./devtools/main/setup-solana-main.sh",
-    "setup-metaplex-main": "node ./devtools/main/setup-metaplex-main.js",
-    "setup-envs-main": "node ./devtools/main/setup-envs-main.js",
-    "deploy-mainnet": "yarn setup-solana-main && yarn setup-metaplex-main && yarn setup-envs-main"
+    "lint": "next lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",

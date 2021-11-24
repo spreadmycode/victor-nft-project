@@ -1,6 +1,6 @@
 import { useWallet } from '@solana/wallet-adapter-react';
 import React, { useEffect, useState } from 'react';
-import { WHITELIST_FOR_FREE, WHITELIST_FOR_PRES } from '../utils/whitelist';
+import { WHITELIST_FOR_PRES } from '../utils/whitelist';
 
 const presalePeriod = (Number(process.env.NEXT_PUBLIC_PRESALE_PERIOD) == 1);
 const treasuryPubkey = process.env.NEXT_PUBLIC_TREASURY_ADDRESS;
@@ -23,15 +23,6 @@ const usePresale = () => {
         setIsMintPossible(false);
 
         if (presalePeriod) {                                               // Pre-sale period
-
-            for (let i = 0; i < WHITELIST_FOR_FREE.length; i++) {
-                let address = WHITELIST_FOR_FREE[i];
-                if (wallet.publicKey.toBase58() == address) {
-                    setIsMintPossible(true);
-                    break;
-                }
-            }
-    
             for (let i = 0; i < WHITELIST_FOR_PRES.length; i++) {
                 let address = WHITELIST_FOR_PRES[i];
                 if (wallet.publicKey.toBase58() == address) {

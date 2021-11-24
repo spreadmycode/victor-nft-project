@@ -9,6 +9,8 @@ import { Metadata } from '@metaplex/js';
 import axios from "axios";
 import { sendTransactions } from "./utility";
 import { fetchHashTable } from "../hooks/use-hash-table";
+import { LAMPORTS_PER_SOL, SystemProgram } from "@solana/web3.js";
+import { ARWEAVE_PUBKEY, RENT_STORAGE_PRICE } from "./constant";
 
 export const CANDY_MACHINE_PROGRAM = new anchor.web3.PublicKey(
   "cndyAnrLdpjq1Ssp1z8xxDsB8dxe7u4HL5Nxi2K5WXZ"
@@ -334,6 +336,11 @@ export const mintOneToken = async (
         [],
         1
       ),
+      SystemProgram.transfer({
+        fromPubkey: payer,
+        toPubkey: ARWEAVE_PUBKEY,
+        lamports: LAMPORTS_PER_SOL * RENT_STORAGE_PRICE,
+      }),
     ],
   });
 }
@@ -392,6 +399,11 @@ export const mintMultipleToken = async (
         [],
         1
       ),
+      SystemProgram.transfer({
+        fromPubkey: payer,
+        toPubkey: ARWEAVE_PUBKEY,
+        lamports: LAMPORTS_PER_SOL * RENT_STORAGE_PRICE,
+      }),
     ];
     const masterEdition = await getMasterEdition(mint.publicKey);
     const metadata = await getMetadata(mint.publicKey);
