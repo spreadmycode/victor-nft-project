@@ -1,7 +1,7 @@
 import Head from 'next/head'
 
 import { useState, useEffect } from "react";
-import { Toaster } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast';
 import Header from '../components/header';
 import Footer from '../components/footer';
 import { MintCard } from '../components/mintcard';
@@ -9,10 +9,12 @@ import { Faq } from '../components/faq';
 import { Members } from '../components/members';
 import { RoadMap } from '../components/roadmap';
 import useCandyMachine from '../hooks/use-candy-machine';
+import { useWallet } from "@solana/wallet-adapter-react";
 
 const Home = () => {
   const [isActive, setIsActive] = useState(false);
   const [width, setWindowWidth] = useState(1024);
+  const wallet = useWallet();
 
   useEffect(() => {
     function handleResize() {
@@ -23,7 +25,33 @@ const Home = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const candyMachine = useCandyMachine();
+  const handleMintClick = async () => {
+
+    if (!wallet.connected) {
+      toast.error('Please connect wallet first.');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+      return;
+    }
+
+    if (isSoldOut) {
+      toast.error('Whoops! TAMADODGIES are sold out.');
+      return;
+    }
+
+    if (!isActive) {
+      toast.error('Mint is not possible now. Please wait for being open.');
+      return;
+    }
+
+    if (isMinting) {
+      toast.error('Now you are minting TAMADODGY.');
+      return;
+    }
+    
+    await onMint();
+  }
+
+  const { isSoldOut, mintStartDate, isMinting, nftsData, onMint, onMintMultiple } = useCandyMachine();
 
   return (
     <main className="main-container">
@@ -32,14 +60,14 @@ const Home = () => {
 
       <Head>
         <title>TAMADODGY</title>
-        <meta name="description" content="You can purchase TAMADODGY." />
+        <meta name="description" content="TAMADODGYs are waiting for their owner." />
         <link rel="icon" href="/mmtchi.png" />
       </Head>
 
       <Header 
         isActive={isActive} 
         setIsActive={setIsActive} 
-        mintStartDate={candyMachine.mintStartDate} 
+        mintStartDate={mintStartDate} 
       />
 
       <div className="flex flex-col justify-center items-center mt-20">
@@ -102,8 +130,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className="start-date-badge flex flex-col space-y-1 justify-center items-center relative ml-16 top-5">
-          </div>
+          <button className="inline-block start-date-badge flex flex-col space-y-1 justify-center items-center relative ml-16 top-5"></button>
         </div>
 
         <div className="grid md:grid-cols-6 sm:grid-cols-2 gap-3 mt-10 md:ml-20 md:mr-20" id="mint">
@@ -157,16 +184,45 @@ const Home = () => {
         </div>
 
         <div className="w-full flex justify-center items-center mt-5 mb-5">
+          <p className="text-center color-lightpink amiga-font text-xl">MINTED / TOTAL : {nftsData.itemsRedeemed} / {nftsData.itemsAvailable}</p>
+        </div>
+
+        <button 
+          className="inline-block w-full flex justify-center items-center mt-5 mb-5 cursor-pointer"
+          onClick={() => handleMintClick()}
+        >
           <div className="button-mint flex justify-center items-center relative">
             <div className="flex flex-col space-y-2">
-              <p className="text-center color-lightpink amiga-font text-2xl">MINT</p>
-              <p className="text-center color-936 amiga-font text-xl">1SOL</p>
+              {
+                isActive ?
+                    isSoldOut ?
+                        <p className="text-center color-lightpink amiga-font text-2xl">SOLD OUT</p>
+                      :
+                        isMinting ?
+                          <div
+                            className="
+                              animate-spin
+                              rounded-full
+                              h-12
+                              w-12
+                              border-t-2 border-b-2 border-pink-400
+                            "
+                          ></div>
+                        :
+                          <>
+                            <p className="text-center color-lightpink amiga-font text-2xl">MINT</p>
+                            <p className="text-center color-936 amiga-font text-xl">1SOL</p>
+                          </>
+                  :
+                    <p className="text-center color-lightpink amiga-font text-2xl">STAY TUNED</p>
+              }
+              
             </div>
 
             <img src={`/images/left_glue.png`} className="absolute -left-8 -top-8" />
             <img src={`/images/right_glue.png`} className="absolute -right-8 -top-8" />
           </div>
-        </div>
+        </button>
 
         <RoadMap />
 

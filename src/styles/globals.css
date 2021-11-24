@@ -54,6 +54,12 @@ body,
   background-size: cover;
   width: 230px;
   height: 239px;
+  transition: all 500ms;
+}
+
+.start-date-badge:hover {
+  width: 240px;
+  height: 249px;
 }
 
 .overview-shadow {
@@ -94,6 +100,11 @@ body,
   width: 280px;
   height: 160px;
   box-shadow: var(--shd,0 3px 3px rgba(0,0,0,.6));
+  transition: background-color 500ms;
+}
+
+.button-mint:hover {
+  background-color: rgb(42, 51, 122);
 }
 
 /* :checked - resize to full height */
