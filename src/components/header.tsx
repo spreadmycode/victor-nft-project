@@ -24,7 +24,7 @@ const Header = ({ isActive, setIsActive, mintStartDate }: any) => {
           src={`/images/tamdodgy logo.webp`}
           alt="Logo" />
       </div>
-      <div className="text-black justify-center space-x-6 text-xl lg:pl-10 lg:pr-10 font-bold flex items-center">
+      <div className="text-white justify-center space-x-6 text-xl lg:pl-10 lg:pr-10 font-bold flex items-center amiga-font">
         <Link href="/">
           <a>HOME</a>
         </Link>

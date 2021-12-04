@@ -1,7 +1,7 @@
 import { Member } from './member';
 export const Members = () => {
     return <div className="flex flex-col justify-center items-center flex-1 mt-5 mb-10">
-        <p className="text-pink-400 lg:text-7xl md:text-5xl text-4xl text-center amiga-font mt-5">TEAM MEMBERS</p>
+        <p className="color-lightpink lg:text-6xl md:text-5xl text-4xl text-center amiga-font mt-5">TEAM MEMBERS</p>
         <div className="grid lg:grid-cols-4 grid-cols-1 gap-5 mt-5 lg:w-9/12 members-background">
         <Member
             image={`/images/k9.webp`}

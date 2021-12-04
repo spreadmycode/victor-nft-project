@@ -57,11 +57,15 @@ const Home = () => {
     <main className="main-container">
 
       <Toaster />
+      
+      
+
 
       <Head>
         <title>TAMADODGY</title>
         <meta name="description" content="TAMADODGYs are waiting for their owner." />
         <link rel="icon" href="/mmtchi.png" />
+      
       </Head>
 
       <Header 
@@ -76,7 +80,7 @@ const Home = () => {
           <div className="flex flex-col md:flex-row">
             <img
               className={width > 768 ? "object-none object-left-bottom top-z-index mb-5" : "object-contain top-z-index mb-5 mx-auto"}
-              src={`/images/mmtchi.png`}
+              src={`/images/mmt460b.png`}
               width={width > 758 ? "460px" : "300px"}
               height={width > 768 ? "540px" : "380"}
               alt="MMTCHI" />
@@ -95,13 +99,13 @@ const Home = () => {
             </div>
             
             <div className="pt-5 flex flex-row md:flex-col md:space-y-2 mx-auto md:m-0">
-              <a href="https://www.discord.gg/wix" target="_blank">
+              <a href="https://discord.gg/BEdbPubA" target="_blank">
                 <img
                   className="object-contain"
                   width="39px"
                   height="39px"
                   src={`/images/discord.png`}
-                  alt="MMTCHI" />
+                  alt="Join Discord!" />
               </a>
               <a href="https://www.twitter.com/wix" target="_blank">
                 <img
@@ -110,16 +114,16 @@ const Home = () => {
                   height="39px"
                   src={`/images/twitter.png`}
                   style={(width > 768) ? {marginLeft: 0} : {marginLeft: '5px'}}
-                  alt="MMTCHI" />
+                  alt="Follow Twitter!" />
               </a>
             </div>
           </div>
         </div>
-
+    
         <div className="ribbon hidden lg:flex lg:flex-row relative">
-          <div className="flex flex-col space-y-3 w-6/12 ml-60 mt-5">
+          <div className="flex flex-col space-y-3 w-6/12 ml-60 mt-14">
             <p className="text-3xl text-white amiga-font">
-              THE STORY .....
+              THE STORY...
             </p>
             <div className="h-40 overflow-y-auto flex flex-col space-y-1">
               <p className="text-sm text-white leading-4">
@@ -135,7 +139,7 @@ const Home = () => {
 
         <div className="grid md:grid-cols-6 sm:grid-cols-2 gap-3 mt-10 md:ml-20 md:mr-20" id="mint">
           <MintCard 
-            title="Baby" 
+            title="BABY" 
             image={`/images/BabyDemo.gif`} 
             subtitle="Baby Tamadodgys"
             description="are tiny creatures that moves very slow; their breeding specs are unknown; all backgrounds’ rarity is each at 22.5% with Amelia and Mermaid at 5%; all eggs’ rarity is each at 23.75% with Coral at 5%."
@@ -184,7 +188,7 @@ const Home = () => {
         </div>
 
         <div className="w-full flex justify-center items-center mt-5 mb-5">
-          <p className="text-center color-lightpink amiga-font text-xl">MINTED / TOTAL : {nftsData.itemsRedeemed} / {nftsData.itemsAvailable}</p>
+          <p className="text-center text-coolGray text-shadow-sm amiga-font text-xl">MINTED TOTAL: {nftsData.itemsRedeemed} / {nftsData.itemsAvailable}</p>
         </div>
 
         <button 

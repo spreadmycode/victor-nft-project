@@ -23,7 +23,7 @@ body,
 }
 
 .main-container {
-  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('../../public/images/background.jpeg') no-repeat center center fixed;
+  background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,0)), url('../../public/images/pixelbg.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -43,10 +43,10 @@ body,
 }
 
 .ribbon {
-  background: url('../../public/images/background_ribbon.png') no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 270px;
+  background: url('../../public/images/ribbon.png') no-repeat;
+  background-size: 100% auto;
+  width: 1413px;
+  height: 345px;
 }
 
 .start-date-badge {
@@ -67,11 +67,11 @@ body,
 }
 
 .mint-card {
-  border: solid 2px #ff5cb6;
-}
+  width: 370px;
+  }
 
 .members-background {
-  background-color: rgba(255,255,255,.6);
+  background-color: rgba(255,255,255,.7);
 }
 
 .roadmap {
@@ -202,4 +202,8 @@ body,
 
 .color-magenta {
   color: rgba(85,14,155,1);
+}
+
+.shadow-box {
+   margin-top: 0;
 }

@@ -1,23 +1,6 @@
 export const Faq = () => {
   return <div className="m-5 relative" id="faq">
-        <img
-            width="200"
-            height="200"
-            className="absolute inset-x-16 -top-20 lg:visible invisible"
-            src={`/images/cloud.webp`}
-            alt="MMTCHI" />
-        <img
-            width="170"
-            height="170"
-            className="absolute right-16 top-20 lg:visible invisible"
-            src={`/images/cloud.webp`}
-            alt="MMTCHI" />
-        <img
-            width="170"
-            height="170"
-            className="absolute left-16 -bottom-20 lg:visible invisible"
-            src={`/images/cloud.webp`}
-            alt="MMTCHI" />
+   
         <div className="background-qa w-full md:w-9/12 mx-auto p-8 amiga-font">
             <p className="text-3xl mb-5 color-magenta text-center">Frequently asked questions</p>
             <div>
